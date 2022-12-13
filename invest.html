@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+</head>
+
+<body>
+    <!-- Top Navbar -->
+    <div class="navbar bg-light" id="topNav" style="height: 50px;">
+        <div class="container container-fluid">
+            <a href="dashboard.html" style="color: #590140" class="btn">
+                <i class="fa-solid fa-angle-left"></i>
+            </a>
+            <span class="m-auto">Investment</span>
+
+            <a href="dashboard.html" class="text-decoration-none">
+                <i class="fa-solid fa-house"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div type="button" data-bs-toggle="modal" data-bs-target="#TargetSavings"
+            class="d-flex justify-content-between container p-3 bg-light mt-3 rounded btn">
+            <span>Open target savings account</span>
+            <i class="fa-solid fa-angle-right"></i>
+        </div>
+        <div type="button" data-bs-toggle="modal" data-bs-target="#FixedDeposit"
+            class="d-flex justify-content-between container p-3 bg-light mt-3 rounded btn">
+            <span>Open fixed deposit account</span>
+            <i class="fa-solid fa-angle-right"></i>
+        </div>
+        <div type="button" data-bs-toggle="modal" data-bs-target="#JointAccount"
+            class="d-flex justify-content-between container p-3 bg-light mt-3 rounded btn">
+            <span>Open shared/joint account</span>
+            <i class="fa-solid fa-angle-right"></i>
+        </div>
+        <div type="button" data-bs-toggle="modal" data-bs-target="#Loan"
+            class="d-flex justify-content-between container p-3 bg-light mt-3 rounded btn">
+            <span>Request a loan</span>
+            <i class="fa-solid fa-angle-right"></i>
+        </div>
+    </div>
+
+
+    <!-- Modal for Target Savings Account-->
+    <div class="modal fade" id="TargetSavings" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <select name="" id="">
+                            <label for=""></label>
+                            <input type="text" class="form-control">
+                        </select>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Mobile Number:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal for Fixed Deposit Account-->
+    <div class="modal fade" id="FixedDeposit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Open a fixed deposit account</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <select name="" id="">
+                            <label for=""></label>
+                            <input type="text" class="form-control">
+                        </select>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Mobile Number:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal for Joint Account-->
+    <div class="modal fade" id="JointAccount" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Open a joint/shared account</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <select name="" id="">
+                            <label for=""></label>
+                            <input type="text" class="form-control">
+                        </select>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Mobile Number:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal for Loan-->
+    <div class="modal fade" id="Loan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Loan</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <small>Contact Information</small>
+                        <div>
+                            <label for="title" class="fw-bold">Title<span class="text-danger">*</span></label>
+                            <select id="title" class="mb-3 form-control">
+                                <option value="Mr">Mr.</option>
+                                <option value="Mrs">Mrs.</option>
+                                <option value="Miss">Miss.</option>
+                            </select>
+                        </div>
+
+                        <label for="fname" class="fw-bold">Full Name <span class="text-danger">*</span></label>
+                        <div class="d-lg-flex mb-3" style="gap:5px">
+                            <input type="text" id="fname" placeholder="First Name" class="form-control"><br>
+                            <input type="text" id="lname" placeholder="Last Name" class="form-control ">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mail" class="fw-bold">Email Address <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="mail" placeholder="Email Address">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mail" class="fw-bold">Phone<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="phone" placeholder="Phone Number">
+                        </div>
+                        <div class="col-12 ">
+                            <label for="dob" class="fw-bold">Date of Birth<span class="text-danger">*</span></label>
+                            <input type="date" id="dob" placeholder="D.O.B" class="form-control"><br>
+                        </div>
+                        <div>
+                            <label for="maritalstatus" class="fw-bold">Marital Status<span
+                                    class="text-danger">*</span></label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="maritalstatusRadio" id="maritalstatus1" value="option1">
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            Married
+                                        </label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="maritalstatusRadio" id="maritalstatus2" value="option2">
+                                        <label class="form-check-label" for="exampleRadios2">
+                                          Single
+                                        </label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="maritalstatusRadio" id="maritalstatus3" value="option3">
+                                        <label class="form-check-label" for="exampleRadios3">
+                                          Others
+                                        </label>
+                                      </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="streetAddress1" class="fw-bold">Street Address <span
+                                    class="text-danger">*</span></label> <input type="text" class="form-control"
+                                id="streetAddress1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="AddressLine2" class="fw-bold">Address Line 2 </label> <input type="text"
+                                class="form-control" id="AddressLine2">
+                        </div>
+                        <div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="yearlived1"
+                                    value="option1">
+                                <label class="form-check-label" for="exampleRadios1">
+                                    0-1 Year
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="yearlived2"
+                                    value="option2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                    1-2 Years
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="yearlived3"
+                                    value="option3">
+                                <label class="form-check-label" for="exampleRadios3">
+                                    3-4 Years
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="yearlived4"
+                                    value="option4">
+                                <label class="form-check-label" for="exampleRadios3">
+                                    5+ Years
+                                </label>
+                            </div>
+                        </div><br>
+
+                        <small>Employment Information</small>
+                        <hr>
+                        <div class="mb-3">
+                            <label for="presentemployer" class="fw-bold">Present Employer<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="presentemployer" placeholder="Present Employer">
+                        </div>
+                        <div class="mb-3">
+                            <label for="occupation" class="fw-bold">Occupation<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="occupation" placeholder="Occupation">
+                        </div>
+                        <div class="mb-3">
+                            <label for="monthlyincome" class="fw-bold">Gross Monthly Income<span
+                                    class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="presentemployer" placeholder="Occupation">
+                        </div>
+                        <div class="mb-3">
+                            <label for="comment" class="fw-bold">Comments</label>
+                            <textarea name="" id="" cols="20" rows="8" class="form-control"></textarea>
+                        </div>
+                        <div class="border border-danger rounded p-3">
+                            <p>
+                                I authorize prospective Credit Grantors/Lending/Leasing Companies to obtain personal and
+                                credit information about me from my employer and credit bureau, or credit reporting
+                                agency, any person who has or may have any financial dealing with me, or from any
+                                references I have provided. This information, as well as that provided by me in the
+                                application, will be referred to in connection with this lease and any other
+                                relationships we may establish from time to time. Any personal and credit information
+                                obtained may be disclosed from time to time to other lenders, credit bureaus or other
+                                credit reporting agencies.
+                            </p>
+                            <input type="checkbox">
+                            <label for="" class="fw-bold">YES</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send Request</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

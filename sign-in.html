@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<style>
+    #glass {
+        background: rgba(255, 255, 255, 0.68);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(2.6px);
+        -webkit-backdrop-filter: blur(2.6px);
+        border: 5px solid rgba(100, 97, 97, 0.21);
+    }
+</style>
+
+<body
+    style="background-image:url(bg_signup.jpg) ; background-size: cover; background-repeat: no-repeat; height: 100vh; ">
+
+    <div id="glass" class="col-10 col-md-8 col-lg-5 m-auto mt-5 rounded shadow rounded rounded-4 p-3">
+        <h5 class="text-center">SIGN IN</h5>
+        <hr>
+        <datalist id="incorrectDetails" class="alert  alert-danger text-center">Invalid Email or Password</datalist>
+        <div class="col-12 ">
+            <label for="mailI" class="fw-bold">Email Address</label>
+            <input type="email" id="mailIn" placeholder="Email" class="form-control"><br>
+        </div>
+
+        <div class="col-12 ">
+            <label for="passIn" class="fw-bold">Password</label>
+            <input type="password" id="passIn" placeholder="Password" class="form-control"><br>
+        </div>
+        <div class="text-center"><button class="btn btn-primary" onclick="logIn()">LOG IN</button></div>
+    </div>
+
+    <script>
+        var allUsers = []
+        // var onlineUser = {}
+        if (localStorage.usersList) {
+            allUsers = JSON.parse(localStorage.getItem("usersList"))
+            console.log(allUsers)
+        } else {
+            window.location = "index.html"
+        }
+        mailIn.addEventListener("input", ()=>{
+            // let validateUser = /^([\w]+) ([.][\w]+)? ([@]) ([a-z]+) ([.]) ([a-z]{1,7}) ( [.] [a-z]{1,7} )?$/
+            let validateUser = /^([a-z]+)([0-9]+)?([.][\w]+)?([@])([a-z]+)([.])([a-z]{1,7})([.][a-z]{1,7})?$/
+            let checkValidation = validateUser.test(mailIn.value)
+            if (checkValidation){
+                // alert("YEs")
+                console.log(checkValidation)
+                mailIn.classList.add('is-valid')
+            }else{
+                // console.log("Noooo")
+                mailIn.classList.remove('is-valid')
+                mailIn.classList.add('is-invalid')
+                console.log(checkValidation)
+            }
+        })
+
+        // console.log(allUsers)
+        const logIn = () => {
+            if (mailIn.value=="" && passIn.value==""){
+                mailIn.classList.add("is-invalid")
+                passIn.classList.add("is-invalid")
+            }
+            let onlineUser = allUsers.find((item, index) => item.email == mailIn.value && item.password == passIn.value)
+            if (onlineUser) {
+                console.log(onlineUser);
+                localStorage.setItem("currentUser", JSON.stringify(onlineUser))
+                window.location = "dashboard.html"
+            } else {
+                incorrectDetails.style.display="block"
+                alert("Invalid info")
+            }
+        }
+
+    </script>
+</body>
+
+</html>
