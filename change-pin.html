@@ -35,7 +35,7 @@
         <body>
             <div class="navbar bg-light" id="topNav" style="background-color: whitesmoke; height: 50px;">
                 <div class="container container-fluid">
-                    <a href="account-details.html" class="btn" style="color:#590140">
+                    <a href="dashboard.html" class="btn" style="color:#590140">
                         <i class="fa-solid fa-angle-left"  data-mdb-ripple="true" data-mdb-ripple-color="light"></i>
                     </a>
                         <span >Change Transaction PIN</span>
@@ -54,10 +54,10 @@
 
                 <div class="text-center">
                     <span class="">
-                        <input type="text" pattern="[1-9]{1}" id="one"  onkeyup="enterOldPin(this, 'two')">
-                        <input type="text" pattern="[1-9]{1}" id="two"  onkeyup="enterOldPin(this, 'three')">
-                        <input type="text" pattern="[1-9]{1}" id="three"  onkeyup="enterOldPin(this, 'four')">
-                        <input type="text" pattern="[1-9]{1}" id="four" >
+                        <input type="text" pattern="[1-9]{1}" id="one"  onkeydown="enterOldPin(this, 'two')">
+                        <input type="text" pattern="[1-9]{1}" id="two"  onkeydown="enterOldPin(this, 'three')">
+                        <input type="text" pattern="[1-9]{1}" id="three"  onkeydown="enterOldPin(this, 'four')">
+                        <input type="text" pattern="[1-9]" id="four" >
                     </span>
                 </div>
                 <div class="text-center mt-2">
@@ -73,9 +73,9 @@
 
                 <div class="text-center">
                     <span class="">
-                        <input type="number" id="newOne" maxlength="1" onkeyup="enterOldPin(this, 'newTwo')">
-                        <input type="number" id="newTwo" maxlength="1" onkeyup="enterOldPin(this, 'newThree')">
-                        <input type="number" id="newThree" maxlength="1" onkeyup="enterOldPin(this, 'newFour')">
+                        <input type="number" id="newOne" maxlength="1" onkeydown="enterOldPin(this, 'newTwo')">
+                        <input type="number" id="newTwo" maxlength="1" onkeydown="enterOldPin(this, 'newThree')">
+                        <input type="number" id="newThree" maxlength="1" onkeydown="enterOldPin(this, 'newFour')">
                         <input type="number" id="newFour" maxlength="1">
                     </span>
                 </div>
@@ -92,9 +92,9 @@
 
                 <div class="text-center">
                     <span class="">
-                        <input type="text" class="border" id="confirmOne" maxlength="1" onkeyup="enterOldPin(this, 'confirmTwo')">
-                        <input type="text" class="border" id="confirmTwo" maxlength="1" onkeyup="enterOldPin(this, 'confirmThree')">
-                        <input type="text" class="border" id="confirmThree" maxlength="1" onkeyup="enterOldPin(this, 'confirmFour')">
+                        <input type="text" class="border" id="confirmOne" maxlength="1" oninput="enterOldPin(this, 'confirmTwo')">
+                        <input type="text" class="border" id="confirmTwo" maxlength="1" oninput="enterOldPin(this, 'confirmThree')">
+                        <input type="text" class="border" id="confirmThree" maxlength="1" oninput="enterOldPin(this, 'confirmFour')">
                         <input type="text" class="border" id="confirmFour" maxlength="1">
                     </span>
                 </div>
@@ -102,9 +102,22 @@
                     <button class="btn btn-light m-auto" onclick="cont3()">Continue</button>
                 </div>
             </datalist>
-
+<input type="text" id="they" oninput="testMe(event)">
+<input type="text" id="emi">
         </body>
         <script>
+
+            // one.addEventListener('input'){
+            //     let validatePin = /^[0-9]$/
+            //     let check = validatePin.test(one.value)
+            //     if (check){
+            //         console.log(check)
+            //     }else{
+            //         console.log(check)
+            //     }
+            // }
+
+
             if (localStorage.usersList && localStorage.currentUser){
                 allUsers = JSON.parse(localStorage.getItem("usersList"))
                 onlineUser = JSON.parse(localStorage.getItem("currentUser"))
@@ -115,9 +128,14 @@
             console.log(onlineUser)
 
             const enterOldPin = (first, last) =>{
-                if (first.value.length){
+                if (first.value.length==""){
+                    if(first.value==1){
+                        document.getElementById(second).focus()
+
+                    }
                     console.log(first.value.length)
-                    document.getElementById(last).focus()
+                }else{
+                    first.value.slice(0, 1)
                 }
             }
 
