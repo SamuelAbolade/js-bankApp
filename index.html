@@ -17,142 +17,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
 </head>
 <style>
     /* * {
         border: solid red 1px;
     } */
-    #navbartoggler{
-    display: inline-block;
-    width: 1.5em;
-    height: 1.5em;
-    vertical-align: middle;
-    background-image: var(--bs-navbar-toggler-icon-bg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 70%;
-    
-    }
-    #navbarbutton{
-    padding: none;
-    border:none;
-    /* outline:none; */
-    border:2px solid;
-    line-height: 1;
-    color: transparent;
-    background-color: transparent;
 
-    /* transition: none; */
-    }
-    #carouselExampleFade .carousel-indicators {
-        display: grid;
-        width: 20px;
-        justify-content: space-between;
-        margin: 0 0 0 0;
-        margin-left: auto;
-        top: 30%;
-        bottom: 30%;
-    }
-
-    .carousel-indicators button {
-        opacity: 1 !important;
-        display: block;
-        width: 5px !important;
-        height: 5px !important;
-        /* background-color: red !important; */
-        border-radius: 50% !important;
-        border: 2px solid #AC3282 !important;
-    }
-
-    .carousel-indicators .active {
-        opacity: 1;
-        background-color: #AC3282;
-    }
-
-    @media (max-width:768px) {
-        #meer {
-            flex-direction: column-reverse !important;
-        }
-    }
-
-    .smartphone {
-        position: relative;
-        width: 300px;
-        height: 640px;
-        margin: auto;
-        border: 16px black solid;
-        border-top-width: 60px;
-        border-bottom-width: 60px;
-        border-radius: 36px;
-    }
-
-    .smartphone:before {
-        content: '';
-        display: block;
-        width: 60px;
-        height: 5px;
-        position: absolute;
-        top: -30px;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: #333;
-        border-radius: 10px;
-    }
-
-    .smartphone:after {
-        content: '';
-        display: block;
-        width: 35px;
-        height: 35px;
-        position: absolute;
-        left: 50%;
-        bottom: -65px;
-        transform: translate(-50%, -50%);
-        background: #333;
-        border-radius: 50%;
-    }
-
-    .smartphone .carousel-item {
-        width: 290px;
-        height: 520px;
-    }
-
-    #features div {
-        width: 150px;
-        height: 120px;
-    }
-
-    #features div:hover {
-        border: 1px solid #AC3282;
-        border-radius: 55px;
-        border-radius: 30px;
-        background: linear-gradient(225deg, #e2e2e2, #ffffff) !important;
-        box-shadow: -12px 12px 24px #999999,
-            12px -12px 24px #ffffff !important;
-    }
-
-    #basic-addon2 {
-        background-color: #AC3282;
-    }
-
-    #basic-addon2:hover {
-        background-color: #F7951F;
-    }
-
-    #footerquicklinks li {
-        list-style-type: none;
-        line-height: 30px;
-    }
-
-    #footerquicklinks a {
-        text-decoration: none;
-        color: #AC3282;
-    }
 </style>
 
 <body>
     <!-- Nav Bar -->
-
     <nav class="navbar navbar-expand-lg bg-light sticky-top">
         <div class="container">
             <a class="navbar-brand" href="">
@@ -170,10 +45,10 @@
                             <a class="nav-link mx-3 fw-bolder" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="">
-                            <a class="nav-link mx-3 fw-bolder" aria-current="page" href="signup.html">SignUp</a>
+                            <a class="nav-link mx-3 fw-bolder" aria-current="page" href="signup.html">Sign Up</a>
                         </li>
                         <li class="">
-                            <a class="nav-link mx-3 fw-bolder" aria-current="page" href="signin.html">SignIn</a>
+                            <a class="nav-link mx-3 fw-bolder" aria-current="page" href="signin.html">Sign In</a>
                         </li>
                     </ul>
                 </span>
@@ -277,28 +152,37 @@
                     transfers,
                     withdrawals and bill payment.</p>
                 <div class="row gap-3 justify-content-evenly " id="features">
-                    <div class="bg-light shadow rounded text-center">
-                        <i class="fa-sharp fa-solid fa-credit-card fs-1 py-2 border"></i>
+                    <div class="bg-light shadow rounded text-center p-3">
+                        <i class="fa-sharp fa-solid fa-credit-card fs-1"></i>
+                        <p class="py-3 lh-1">MULTIPLE CARDS</p>
+                    </div>
+                    <div class="bg-light shadow rounded text-center p-3">
+                        <i class="fa-sharp fa-solid fa-users fs-1"></i>
+                        <p class="py-3 lh-1">MULTIPLE BENEFICIARY</p>
+                    </div>
+                    <div class="bg-light shadow rounded text-center p-3">
+                        <i class="fa-sharp fa-solid fa-chart-pie fs-1"></i>
+                        <p class="py-3 lh-1">ADVANCED BUDGETINGE</p>
+                    </div>
+                    <div class="bg-light shadow rounded text-center p-3">
+                        <i class="fa-solid fa-arrows-rotate fs-1"></i>
+                        <p class="py-3 lh-1">RECURRING TRANSFER</p>
+                    </div>
+                    <div class="bg-light shadow rounded text-center p-3">
+                        <i class="fa-sharp fa-solid fa-qrcode fs-1"></i>
+                        <p class="py-3 lh-1">QR CODE</p>
+                    </div>
+                    <div class="bg-light shadow rounded text-center p-3">
+                        <i class="fa-solid fa-sack-dollar fs-1"></i>
+                        <p class="py-3 lh-1">CASHLESS WITHDRAWALS</p>
                     </div>
                     <div class="bg-light shadow rounded">
-                        <i class="fa-sharp fa-solid fa-users"></i>
+                        <i class="fa-solid fa-sack-dollar bg-success fs-1" ></i>
+                        <p class="py-3 lh-1"></p>
                     </div>
                     <div class="bg-light shadow rounded">
-                        <i class="fa-sharp fa-solid fa-chart-pie"></i>
+                        <i class="fa-solid fa-money-bill-wave"></i>
                     </div>
-                    <div class="bg-light shadow rounded">
-                        <i class="fa-solid fa-arrows-rotate"></i>
-                    </div>
-                    <div class="bg-light shadow rounded">
-                        <i class="fa-regular fa-location-dot"></i>
-                    </div>
-                    <div class="bg-light shadow rounded">
-                        <i class="fa-sharp fa-solid fa-qrcode"></i>
-                    </div>
-                    <div class="bg-light shadow rounded">
-                        <i class="fa-solid fa-sack-dollar"></i>
-                    </div>
-                    <div class="bg-light shadow rounded"></div>
                     <div class="bg-light shadow rounded"></div>
                     <div class="bg-light shadow rounded"></div>
                     <div class="bg-light shadow rounded"></div>
@@ -393,7 +277,7 @@
                 <p class="mt-3 col-lg-6 p-2" style="color: #AC3282;">The more accounts opened with your code*, the
                     closer
                     you are to N2m monthly payment from V</p>
-                <button class="btn rounded-5 text-light m-auto" style="background-color: #AC3282;">
+                <button class="btn rounded-5 text-light m-auto mb-3" style="background-color: #AC3282;">
                     Join the Veelage
                 </button>
             </div>

@@ -1,3 +1,135 @@
+nav a {
+  color: #AC3282 !important;
+}
+
+#navbartoggler {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-image: var(--bs-navbar-toggler-icon-bg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
+}
+
+#navbarbutton {
+  padding: none;
+  border: none;
+  /* outline:none; */
+  border: 2px solid;
+  line-height: 1;
+  color: transparent;
+  background-color: transparent;
+
+  /* transition: none; */
+}
+
+#carouselExampleFade .carousel-indicators {
+  display: grid;
+  width: 20px;
+  justify-content: space-between;
+  margin: 0 0 0 0;
+  margin-left: auto;
+  top: 30%;
+  bottom: 30%;
+}
+
+.carousel-indicators button {
+  opacity: 1 !important;
+  display: block;
+  width: 5px !important;
+  height: 5px !important;
+  /* background-color: red !important; */
+  border-radius: 50% !important;
+  border: 2px solid #AC3282 !important;
+}
+
+.carousel-indicators .active {
+  opacity: 1;
+  background-color: #AC3282;
+}
+
+@media (max-width:768px) {
+  #meer {
+    flex-direction: column-reverse !important;
+  }
+}
+
+.smartphone {
+  position: relative;
+  width: 300px;
+  height: 640px;
+  margin: auto;
+  border: 16px black solid;
+  border-top-width: 60px;
+  border-bottom-width: 60px;
+  border-radius: 36px;
+}
+
+.smartphone:before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 5px;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #333;
+  border-radius: 10px;
+}
+
+.smartphone:after {
+  content: '';
+  display: block;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: 50%;
+  bottom: -65px;
+  transform: translate(-50%, -50%);
+  background: #333;
+  border-radius: 50%;
+}
+
+.smartphone .carousel-item {
+  width: 290px;
+  height: 520px;
+}
+
+#features div {
+  width: 150px;
+  height: 120px;
+  color: #AC3282;
+}
+
+#features div:hover {
+  border: 1px solid #AC3282;
+  border-radius: 55px;
+  border-radius: 30px;
+  background: linear-gradient(225deg, #e2e2e2, #ffffff) !important;
+  box-shadow: -12px 12px 24px #be669f,
+    12px -12px 24px #ffffff !important;
+}
+
+#basic-addon2 {
+  background-color: #AC3282;
+}
+
+#basic-addon2:hover {
+  background-color: #F7951F;
+}
+
+#footerquicklinks li {
+  list-style-type: none;
+  line-height: 30px;
+}
+
+#footerquicklinks a {
+  text-decoration: none;
+  color: #AC3282;
+}
 
 /* .fade-in {
     animation: fadeIn ease 10s;

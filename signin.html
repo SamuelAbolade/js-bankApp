@@ -22,21 +22,27 @@
 </style>
 
 <body
-    style="background-image:url(bg_signup.jpg) ; background-size: cover; background-repeat: no-repeat; height: 100vh; ">
+    style="background-image:url(./images/bg_signup.jpg) ; background-size: cover; background-repeat: no-repeat; height: 100vh; ">
 
     <div id="glass" class="col-10 col-md-8 col-lg-5 m-auto mt-5 rounded shadow rounded rounded-4 p-3">
         <h5 class="text-center">SIGN IN</h5>
         <hr>
         <datalist id="incorrectDetails" class="alert  alert-danger text-center">Invalid Email or Password</datalist>
-        <div class="col-12 ">
-            <label for="mailI" class="fw-bold">Email Address</label>
-            <input type="email" id="mailIn" placeholder="Email" class="form-control"><br>
-        </div>
+        <div class="col-12">
+            <div class="form-floating col-12">
+                <input type="text" id="mailIn" placeholder="Email" class="form-control">
+                <label for="mailIn" class="text-muted">Email Address <span class="text-danger">*</span></label>
+            </div>
+            <small id="invalidEmail" class="text-danger"></small>
+        </div><br>
 
-        <div class="col-12 ">
-            <label for="passIn" class="fw-bold">Password</label>
-            <input type="password" id="passIn" placeholder="Password" class="form-control"><br>
-        </div>
+        <div class="col-12">
+            <div class="form-floating col-12">
+                <input type="password" id="passIn" placeholder="Password" class="form-control">
+                <label for="passIn" class="text-muted">Password<span class="text-danger">*</span></label>
+            </div>
+            <small id="invalidPassword" class="test-danger"></small>
+        </div><br>
         <div class="text-center"><button class="btn btn-primary" onclick="logIn()">LOG IN</button></div>
     </div>
 
@@ -49,23 +55,20 @@
         } else {
             window.location = "index.html"
         }
-        mailIn.addEventListener("input", ()=>{
-            // let validateUser = /^([\w]+) ([.][\w]+)? ([@]) ([a-z]+) ([.]) ([a-z]{1,7}) ( [.] [a-z]{1,7} )?$/
-            let validateUser = /^([a-z]+)([0-9]+)?([.][\w]+)?([@])([a-z]+)([.])([a-z]{1,7})([.][a-z]{1,7})?$/
-            let checkValidation = validateUser.test(mailIn.value)
+        mailIn.addEventListener("blur", ()=>{
+            let validateEmail = /^([a-z]+)([0-9]+)?([.][\w]+)?([@])([a-z]+)([.])([a-z]{1,7})([.][a-z]{1,7})?$/
+            let checkValidation = validateEmail.test(mailIn.value)
             if (checkValidation){
-                // alert("YEs")
                 console.log(checkValidation)
+                mailIn.classList.remove('is-invalid')
                 mailIn.classList.add('is-valid')
             }else{
-                // console.log("Noooo")
                 mailIn.classList.remove('is-valid')
                 mailIn.classList.add('is-invalid')
                 console.log(checkValidation)
             }
         })
 
-        // console.log(allUsers)
         const logIn = () => {
             if (mailIn.value=="" && passIn.value==""){
                 mailIn.classList.add("is-invalid")

@@ -22,14 +22,14 @@
 </style>
 
 <body
-    style="background-image:url(bg_signup.jpg) ; background-size: cover; background-repeat: no-repeat;min-height: 100vh;">
+    style="background-image:url(./images/bg_signup.jpg) ; background-size: cover; background-repeat: no-repeat;min-height: 100vh;">
 
     <div id="glass" class="col-12 col-lg-6 m-auto rounded shadow p-3 mt-5 rounded rounded-5">
         <h5 class="text-center">CREATE AN ACCOUNT WITH US</h5>
         <hr>
+        <small id="invalidDetails" class="alert alert-danger text-danger text-center fw-bold m-auto border" style="display: none;"></small>
         <small>Personal Information</small><br>
         <!-- <form action=""> -->
-            <small id="invalidDetails" class="alert alert-danger text-danger text-center fw-bold m-auto border" style="display: none;"></small>
             <div class=" col-12 mt-4">
                 <div class="form-floating">
                     <input type="text" id="fname" placeholder="First Name" class="form-control">
@@ -470,8 +470,8 @@
             }
         })
         phone.addEventListener("blur", () => {
-            let validatePhone = /^([0-9])$/
-            let checkPhoneValidation = validatePhone.test(mail.value)
+            let validatePhone = /^[0-9]{5,11}$/
+            let checkPhoneValidation = validatePhone.test(phone.value)
             if (checkPhoneValidation) {
                 validPhoneNumber = true
                 phone.classList.remove('is-invalid')
