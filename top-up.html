@@ -18,7 +18,17 @@
     <!-- Font-Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
-
+<style>
+    #closemodal {
+        border: none;
+        outline: none !important;
+        outline: none !important;
+        box-shadow: none;
+    }
+    .navbar a{
+        color:#590140;
+    }
+</style>
 <body>
     <div class="navbar bg-light" id="topNav" style="background-color: whitesmoke; height: 50px;">
         <div class="container container-fluid">
@@ -46,10 +56,12 @@
             <small class="d-block text-muted">Pay for your other subscription</small>
             <i class="fa-solid fa-angle-right"></i>
         </div>
-        <a href="" class="m-auto">
-            <i class="fa-solid fa-question"></i>
-            <span>I need help</span>
-        </a>
+        <div class="text-center p-2">
+            <a href="" class="m-auto">
+                <i class="fa-solid fa-question"></i>
+                <span>I need help</span>
+            </a>
+        </div>
     </div>
 
 
@@ -59,8 +71,8 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Airtime</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closemodal"></button>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -93,8 +105,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Data Subscriptions</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closemodal"></button>
                 </div>
                 <div class="modal-body">
                     <form>
