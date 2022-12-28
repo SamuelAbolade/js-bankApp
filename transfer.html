@@ -30,11 +30,15 @@
         outline: none !important;
         box-shadow: none;
     }
-    .navbar a{
-        color: #a32981;
+    .navbar a {
+        color: #590140;
     }
-    .navbar a:hover{
-        color: #a32981;
+    .form-control:focus {
+    color: black;
+    background-color: #fff;
+    border:2px solid #a32981;
+    outline: 3px;
+    box-shadow: 0 0 0 0 white;
     }
 </style>
 
@@ -43,11 +47,11 @@
     <div class="navbar bg-light" id="topNav" style="background-color: whitesmoke; height: 50px;">
         <div class="container container-fluid">
             <a href="dashboard.html" class="btn">
-                <i class="fa-solid fa-angle-left" data-mdb-ripple="true" data-mdb-ripple-color="light"></i>
+                <i class="fa-solid fa-angle-left"></i>
             </a>
             <span>Transfer</span>
 
-            <a href="dashboard.html" class="btn">
+            <a href="dashboard.html" class="text-decoration-none">
                 <i class="fa-solid fa-house"></i>
             </a>
         </div>
@@ -73,9 +77,8 @@
         </form>
         <div class="text-center">
             <button data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap"
-                class="btn text-light col-lg-5 col-10 m-auto p-4" id="sendMoney" style="background-color: #a32981;"
+                class="btn text-light col-12 m-auto p-4" id="sendMoney" style="background-color: #a32981;"
                 onclick="confirmRecieverDetails()"></button>
-
         </div>
     </div>
 

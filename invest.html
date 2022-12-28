@@ -18,6 +18,12 @@
     <!-- Font-Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
+<style>
+    .navbar a {
+        color: #590140;
+    }
+
+</style>
 
 <body>
     <!-- Top Navbar -->
@@ -64,14 +70,13 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Target Savings Account</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <select name="" id="">
-                            <label for=""></label>
-                            <input type="text" class="form-control">
+                            <option value="" class="form-control"></option>
                         </select>
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Mobile Number:</label>
@@ -80,8 +85,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                    <button type="button" class="btn text-light" data-bs-dismiss="modal" style="background-color: #8d7787;">Close</button>
+                    <button type="button" class="btn text-light" style="background-color: #590140;">Understood</button>
                 </div>
             </div>
         </div>
@@ -110,8 +115,10 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                    <button type="button" class="btn text-light" data-bs-dismiss="modal"
+                        style="background-color: #8d7787;">Close</button>
+                    <button type="button" class="btn text-light" style="background-color: #590140;">Open
+                        Account</button>
                 </div>
             </div>
         </div>
@@ -140,8 +147,9 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                    <button type="button" class="btn text-light" data-bs-dismiss="modal"
+                        style="background-color: #8d7787;">Close</button>
+                    <button type="button" class="btn text-light" style="background-color: #590140;">Understood</button>
                 </div>
             </div>
         </div>
@@ -189,24 +197,27 @@
                         <div>
                             <label for="maritalstatus" class="fw-bold">Marital Status<span
                                     class="text-danger">*</span></label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="maritalstatusRadio" id="maritalstatus1" value="option1">
-                                        <label class="form-check-label" for="exampleRadios1">
-                                            Married
-                                        </label>
-                                      </div>
-                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="maritalstatusRadio" id="maritalstatus2" value="option2">
-                                        <label class="form-check-label" for="exampleRadios2">
-                                          Single
-                                        </label>
-                                      </div>
-                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="maritalstatusRadio" id="maritalstatus3" value="option3">
-                                        <label class="form-check-label" for="exampleRadios3">
-                                          Others
-                                        </label>
-                                      </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="maritalstatusRadio"
+                                    id="maritalstatus1" value="option1">
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Married
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="maritalstatusRadio"
+                                    id="maritalstatus2" value="option2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                    Single
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="maritalstatusRadio"
+                                    id="maritalstatus3" value="option3">
+                                <label class="form-check-label" for="exampleRadios3">
+                                    Others
+                                </label>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="streetAddress1" class="fw-bold">Street Address <span
@@ -285,8 +296,10 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send Request</button>
+                    <button type="button" class="btn text-light" data-bs-dismiss="modal"
+                        style="background-color: #8d7787;">Close</button>
+                    <button type="button" class="btn text-light" style="background-color: #590140;">Send
+                        Request</button>
                 </div>
             </div>
         </div>

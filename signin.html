@@ -19,13 +19,22 @@
         -webkit-backdrop-filter: blur(2.6px);
         border: 5px solid rgba(100, 97, 97, 0.21);
     }
+
+    .form-control:focus {
+        color: black;
+        background-color: #fff;
+        border: 2px solid #a32981;
+        outline: 3px;
+        box-shadow: 0 0 0 0 white;
+    }
 </style>
 
 <body
-    style="background-image:url(./images/bg_signup.jpg) ; background-size: cover; background-repeat: no-repeat; height: 100vh; ">
+>
 
     <div id="glass" class="col-10 col-md-8 col-lg-5 m-auto mt-5 rounded shadow rounded rounded-4 p-3">
-        <h5 class="text-center">SIGN IN</h5>
+
+        <h5 class="text-center">Welcome to V!</h5>
         <hr>
         <datalist id="incorrectDetails" class="alert  alert-danger text-center">Invalid Email or Password</datalist>
         <div class="col-12">
@@ -43,7 +52,10 @@
             </div>
             <small id="invalidPassword" class="test-danger"></small>
         </div><br>
-        <div class="text-center"><button class="btn btn-primary" onclick="logIn()">LOG IN</button></div>
+        <div class="text-center"><button class="btn text-light" onclick="logIn()" style="background-color: #590140;">SIGN IN</button></div>
+        <div class="text-center p-2">
+            <a href="signup.html" style="color: #a32981;">Create an Account</a>
+        </div>
     </div>
 
     <script>
@@ -55,14 +67,14 @@
         } else {
             window.location = "index.html"
         }
-        mailIn.addEventListener("blur", ()=>{
+        mailIn.addEventListener("blur", () => {
             let validateEmail = /^([a-z]+)([0-9]+)?([.][\w]+)?([@])([a-z]+)([.])([a-z]{1,7})([.][a-z]{1,7})?$/
             let checkValidation = validateEmail.test(mailIn.value)
-            if (checkValidation){
+            if (checkValidation) {
                 console.log(checkValidation)
                 mailIn.classList.remove('is-invalid')
                 mailIn.classList.add('is-valid')
-            }else{
+            } else {
                 mailIn.classList.remove('is-valid')
                 mailIn.classList.add('is-invalid')
                 console.log(checkValidation)
@@ -70,7 +82,7 @@
         })
 
         const logIn = () => {
-            if (mailIn.value=="" && passIn.value==""){
+            if (mailIn.value == "" && passIn.value == "") {
                 mailIn.classList.add("is-invalid")
                 passIn.classList.add("is-invalid")
             }
@@ -80,7 +92,7 @@
                 localStorage.setItem("currentUser", JSON.stringify(onlineUser))
                 window.location = "dashboard.html"
             } else {
-                incorrectDetails.style.display="block"
+                incorrectDetails.style.display = "block"
                 alert("Invalid info")
             }
         }

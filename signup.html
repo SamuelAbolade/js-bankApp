@@ -19,15 +19,24 @@
         -webkit-backdrop-filter: blur(2.6px);
         border: 5px solid rgba(100, 97, 97, 0.21);
     }
+    .form-control:focus {
+        color: black;
+        background-color: #fff;
+        border: 2px solid #a32981;
+        outline: 3px;
+        box-shadow: 0 0 0 0 white;
+    }
 </style>
 
-<body
-    style="background-image:url(./images/bg_signup.jpg) ; background-size: cover; background-repeat: no-repeat;min-height: 100vh;">
+<body>
 
-    <div id="glass" class="col-12 col-lg-6 m-auto rounded shadow p-3 mt-5 rounded rounded-5">
-        <h5 class="text-center">CREATE AN ACCOUNT WITH US</h5>
-        <hr>
+    <div id="glass" class="col-12 col-lg-6 m-auto shadow p-3 mt-lg-5 rounded-lg rounded-lg-5">
+        <div class="col-3 m-auto p-3">
+            <img src="./images/VBANK-TRANSPARENT-02.png" class="w-100" alt="">
+        </div>
+        <h6 class="text-center fw-bold">CREATE AN ACCOUNT WITH US</h6>
         <small id="invalidDetails" class="alert alert-danger text-danger text-center fw-bold m-auto border" style="display: none;"></small>
+        <hr>
         <small>Personal Information</small><br>
         <!-- <form action=""> -->
             <div class=" col-12 mt-4">
@@ -345,7 +354,10 @@
             </div><br>
 
             <div class="text-center">
-                <button class="btn btn-primary" id="userSignUp" onclick="signUp()">CREATE ACCOUNT</button>
+                <button class="btn text-light p-3" id="userSignUp" onclick="signUp()" style="background-color: #590140;">CREATE ACCOUNT</button>
+            </div>
+            <div class="text-center p-2">
+                <a href="signin.html" style="color: #a32981;">Already have an account? Sign In</a>
             </div>
         <!-- </form> -->
     </div>
@@ -536,7 +548,7 @@
                     invalidPassword.innerText="Password is required"
                 } 
                 invalidDetails.style.display="block"
-                invalidDetails.innerText="Kindly fill all Detalis"
+                invalidDetails.innerText="Kindly fill all detalis"
                 alert("Fill all Details")
             }
         }
