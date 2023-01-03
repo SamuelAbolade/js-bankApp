@@ -170,6 +170,7 @@
 
     <script>
         var allTransfer = []
+        
         var onlineUserTransactionDetails
         var debitTransactions
         var creditTransactions
@@ -178,10 +179,10 @@
         let validAmount = false
         let pinTyped = false
         let findUser
-        let transactionId = (Math.floor(Math.random() * 1000000000000000000 - 9000000000000000000) + 100000000000000000) * -1
+        let transactionId = (Math.floor(Math.random() * 10000000000 - 90000000000) + 1000000000) * -1
+        sendMoney.disabled = true
         let show = false
 
-        console.log(allTransfer)
         if (localStorage.usersList && localStorage.currentUser) {
             allUsers = JSON.parse(localStorage.getItem("usersList"))
             onlineUser = JSON.parse(localStorage.getItem("currentUser"))
@@ -193,9 +194,7 @@
             console.log("allTransfer")
             console.log(allTransfer)
         }
-
-        sendMoney.disabled = true
-
+        
         transferTo.addEventListener("input", () => {
             let findUser = allUsers.find((item, index) => item.accountnumber == transferTo.value && item.accountnumber !== onlineUser.accountnumber)
             if (findUser) {
