@@ -8,6 +8,36 @@
     var creditTransactions
 
 
+
+    const they =()=>{
+        const getAcc = "https://maylancer.org/api/nuban/api.php"
+    //     fetch(getAcc)
+    //       .then(response => {
+    //         return response.json();
+    //       }).then(data => {
+    //         console.log(data);
+    //       });
+    // }
+    fetch (getAcc)
+    // .then((response)=>response.json())
+    // .then ((convertedResponse)=>{
+    //     console.log(convertedResponse)
+    //     // loading.innerHTML=""
+    //     // convertedResponse.map((item, index)=>{
+    //     //     disp.innerHTML+=`<h1>${item.artist}</h1>`
+    //     })
+.then(response => {
+    return response.json();
+  }).then(data => {
+      if (apiAccountNumber.value == data.account_number && data.Bank_Name == 057){
+          console.log(data);
+        }else{
+            console.log(data.status)
+        }
+        console.log(data)
+  });
+    }
+
     if (localStorage.usersList && localStorage.currentUser) {
         allUsers = JSON.parse(localStorage.getItem("usersList"))
         onlineUser = JSON.parse(localStorage.getItem("currentUser"))
