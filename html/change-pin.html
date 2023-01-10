@@ -15,21 +15,15 @@
                 <!-- Font-Awesome -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
+                <link rel="stylesheet" href="/css/style.css">
         <style>
             input {
                 height: 50px;
-                width: 50px;
+                width: 500px;
                 font-size: 50px;
                 text-align: center;
                 border-radius: 10px; 
                 border:1px solid #555
-            }
-            #closebutton{
-                border: none;
-                outline: none !important;
-                outline: none !important;
-                box-shadow: none;
-                
             }
         </style>
         <body>
@@ -46,64 +40,16 @@
                 </div>    
             </div>
 
-            <div id="oldDiv">
                 <div class="text-center">
                     <span id="pinType">Enter your old PIN</span>
                     <marquee behavior="" direction="right">Note: your default Transaction PIN is 1234 </marquee>
                 </div>
-
-                <div class="text-center">
-                    <span class="">
-                        <input type="text" pattern="[1-9]{1}" id="one"  onkeydown="enterOldPin(this, 'two')">
-                        <input type="text" pattern="[1-9]{1}" id="two"  onkeydown="enterOldPin(this, 'three')">
-                        <input type="text" pattern="[1-9]{1}" id="three"  onkeydown="enterOldPin(this, 'four')">
-                        <input type="text" pattern="[1-9]" id="four" >
-                    </span>
+                <div class="m-auto text-center">
+                    <input type="number" id="pinTyped" >
                 </div>
                 <div class="text-center mt-2">
-                    <button class="btn btn-light m-auto" onclick="cont()">Continue</button>
+                    <button class="btn btn-secondary" onclick="changePin()">Continue</button>
                 </div>
-            </div>
-
-
-            <datalist id="newDiv">
-                <div class="text-center">
-                    <span id="pinType">Enter new PIN</span>
-                </div>
-
-                <div class="text-center">
-                    <span class="">
-                        <input type="number" id="newOne" maxlength="1" onkeydown="enterOldPin(this, 'newTwo')">
-                        <input type="number" id="newTwo" maxlength="1" onkeydown="enterOldPin(this, 'newThree')">
-                        <input type="number" id="newThree" maxlength="1" onkeydown="enterOldPin(this, 'newFour')">
-                        <input type="number" id="newFour" maxlength="1">
-                    </span>
-                </div>
-                <div class="text-center mt-2">
-                    <button class="btn btn-light m-auto" onclick="cont2()">Continue</button>
-                </div>
-            </datalist>
-
-
-            <datalist id="confirmDiv">
-                <div class="text-center">
-                    <span id="pinType">Confirm new PIN</span>
-                </div>
-
-                <div class="text-center">
-                    <span class="">
-                        <input type="text" class="border" id="confirmOne" maxlength="1" oninput="enterOldPin(this, 'confirmTwo')">
-                        <input type="text" class="border" id="confirmTwo" maxlength="1" oninput="enterOldPin(this, 'confirmThree')">
-                        <input type="text" class="border" id="confirmThree" maxlength="1" oninput="enterOldPin(this, 'confirmFour')">
-                        <input type="text" class="border" id="confirmFour" maxlength="1">
-                    </span>
-                </div>
-                <div class="text-center mt-2">
-                    <button class="btn btn-light m-auto" onclick="cont3()">Continue</button>
-                </div>
-            </datalist>
-<input type="text" id="they" oninput="testMe(event)">
-<input type="text" id="emi">
         </body>
         <script>
 
@@ -115,98 +61,42 @@
             }
             
             console.log(onlineUser)
+            var pins =[]
+            var enteredOldPin = false
+            var enteredNewPin = false
+            var confirmNewPin = false
+            console.log(pins.length)
 
-            const enterOldPin = (first, last) =>{
-                if (first.value.length==""){
-                    if(first.value==1){
-                        document.getElementById(second).focus()
-
+            pinTyped.addEventListener("input", ()=>{
+                if (pinTyped.value.length==4){
+                    pinTyped.value="1111"
+                }
+            })
+            const changePin=()=>{
+                if (pins.length == 0){
+                    pins.push(pinTyped.value)
+                    pinTyped.value=""
+                    console.log(pins)
+                    console.log("a")
+                    enteredOldPin = true
+                }else if(enteredOldPin ==true && enteredNewPin == false && confirmNewPin == false){
+                    pins.push(pinTyped.value)
+                    pinTyped.value=""
+                    console.log(pins)
+                    console.log("b")
+                    enteredNewPin = true
+                }else if(enteredOldPin==true && enteredNewPin==true && confirmNewPin== false){
+                    pins.push(pinTyped.value)
+                    pinTyped.value=""
+                    console.log(pins)
+                    console.log("c")
+                    confirmNewPin = true
+                    if(pins[0]==onlineUser.transactionPin && pins[1]==pins[2]){
+                        alert("Hello")
+                    }else{
+                        alert("Awaa")
                     }
-                    console.log(first.value.length)
-                }else{
-                    first.value.slice(0, 1)
                 }
-            }
-
-            // let oldPin
-            
-            // console.log(digitOne)
-            let user = []
-            const cont =() =>{
-                let digitOne = one.value
-                let digitTwo = two.value
-                let digitThree = three.value
-                let digitFour = four.value
-                 let oldPin = digitOne + digitTwo + digitThree + digitFour 
-                 var oldP = {
-                    oldPin
-                 }
-                 user.push(oldP)
-                    one.value=""
-                    two.value=""
-                    three.value=""
-                    four.value=""
-                oldDiv.style.display="none"
-                newDiv.style.display="block"
-            }
-
-            const cont2 = () =>{
-                pinType.innerText = "Enter new PIN"
-                let digitOne = newOne.value
-                let digitTwo = newTwo.value
-                let digitThree = newThree.value
-                let digitFour = newFour.value
-                let newPin = digitOne + digitTwo + digitThree + digitFour 
-                var newP = {
-                    newPin
-                }
-                user.push(newP)
-                    newOne.value=""
-                    newTwo.value=""
-                    newThree.value = ""
-                    newFour.value = ""
-                console.log(newPin) 
-                newDiv.style.display="none"
-                confirmDiv.style.display="block"
-            }
-
-
-            const cont3 = () =>{
-                pinType.innerText = "Confirm New Pin"
-                let digitOne = confirmOne.value
-                let digitTwo = confirmTwo.value
-                let digitThree = confirmThree.value
-                let digitFour = confirmFour.value
-                let confirmPin = digitOne + digitTwo + digitThree + digitFour
-                var confamP ={
-                    confirmPin
-                } 
-                user.push(confamP)
-                    confirmOne.value=""
-                    confirmTwo.value=""
-                    confirmThree.value = ""
-                    confirmFour.value = ""
-                console.log(confirmPin)
-                console.log(onlineUser.transactionPin)
-                if (user[0].oldPin == onlineUser.transactionPin && (user[1].newPin == user[2].confirmPin)){
-                    alert("PIN changed")
-                    onlineUser.transactionPin = user[2].confirmPin
-                    updatePin = allUsers.find((item, index) => item.accountnumber == onlineUser.accountnumber)
-                    updatePin.transactionPin = user.confirmPin
-                    oldDiv.style.display = "block"
-                    confirmDiv.style.display ="none"
-                    console.log(onlineUser)
-                    console.log(allUsers)
-                    localStorage.setItem("usersList", JSON.stringify(allUsers))
-                    localStorage.setItem("currentUser", JSON.stringify(onlineUser))
-                }else{
-                    alert ("PIN'S do not match")
-                    user =[]
-                    confirmDiv.style.display="none" 
-                    oldDiv.style.display="block"
-                }
-                console.log(user)
-                console.log(onlineUser.transactionPin)
             }
             
 </script>
