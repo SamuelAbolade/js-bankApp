@@ -22,9 +22,9 @@
     <link rel="stylesheet" href="/css/style.css">
     <style>
         input {
-            height: 50px;
-            width: 120px;
-            font-size: 50px;
+            height: 50px !important;
+            width: 140px !important;
+            font-size: 50px !important;
             text-align: center;
             border-radius: 10px;
             border: 1px solid #555
@@ -44,17 +44,23 @@
             </a>
         </div>
     </div>
+    <div id="changePinSuccess">
+        <div class="text-center my-2">
+            <span id="pinToEnter" class="fw-bold" style="color:#8b0264;">Enter your old PIN</span>
+        </div>
+        <div class="text-center">
+            <marquee behavior="" direction="" class="alert p-1 col-10 col-lg-8 alert-warning ">Note: your default
+                Transaction PIN is 1234 </marquee>
+        </div>
+        <div class="m-auto text-center">
+            <input type="number" class="form-control m-auto" id="pinTyped">
+        </div>
+        <div class="text-center mt-2">
+            <button class="btn text-light" style="background-color: #590140;" onclick="changePin()">Continue</button>
+        </div>
+    </div>
 
-    <div class="text-center">
-        <span id="pinToEnter">Enter your old PIN</span>
-        <marquee behavior="" direction="right">Note: your default Transaction PIN is 1234 </marquee>
-    </div>
-    <div class="m-auto text-center">
-        <input type="number"  id="pinTyped">
-    </div>
-    <div class="text-center mt-2">
-        <button class="btn btn-secondary" onclick="changePin()">Continue</button>
-    </div>
+
 </body>
 <script src="/js/change-pin.js"></script>
 
