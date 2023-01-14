@@ -8,33 +8,26 @@
     <title>Document</title>
 
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
 
     <!-- Font-Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
-<style>
-    #closebutton {
-        border: none;
-        outline: none !important;
-        outline: none !important;
-        box-shadow: none;
-
-    }
-</style>
-
-<body onload="validateUser()" id="bod">
+<body>
     <div class="navbar bg-light" id="topNav" style="background-color: whitesmoke; height: 50px;">
         <div class="container container-fluid">
-            <a href="dashboard.html" style="color: #590140" class="btn">
+            <a href="profile.html" style="color: #590140" class="btn">
                 <i class="fa-solid fa-angle-left"></i>
             </a>
             <span class="m-auto">Profile</span>
@@ -46,214 +39,175 @@
             </div>
         </div>
     </div>
+<style>
+    output{
+  width: 100%;
+  min-height: 150px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 15px;
+  position: relative;
+  border-radius: 5px;
+}
+
+output .image{
+  height: 150px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  position: relative;
+}
+
+output .image img{
+  height: 100%;
+  width: 100%;
+}
+
+output .image span {
+  position: absolute;
+  top: -4px;
+  right: 4px;
+  cursor: pointer;
+  font-size: 22px;
+  color: white;
+}
+
+output .image span:hover {
+  opacity: 0.8;
+}
+
+output .span--hidden{
+  visibility: hidden;
+}
+</style>
+    <input type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
 
     <div class="m-auto text-center">
-        <button class="m-auto mt-5 rounded-circle border border-danger p-0 btn" style="width: 80px; height:80px;">
-            <img src="Capture.PNG" alt="" id="profilephoto" class="rounded-circle border border-success m-auto p-0"
-                style="width:80px; height:80px;">
+        <button data-bs-toggle="modal" data-bs-target="#updateProfilePhoto" data-bs-whatever="@getbootstrap" class="m-auto mt-5 rounded-circle border border-dange p-0 btn" style="width: 80px; height:80px;">
+        <img src="" id="profilePhoto" style="width: 80px; height: 80px;" class="rounded-circle" alt="">
         </button>
         <h5 class="text-center mt-4">
             <div id="dispAccName" class="fw-bold text-uppercase"></div>
         </h5>
-        <div class="">
-            <div data-bs-toggle="modal" data-bs-target="#bvnViewModal" style="color: #e042b3 ;" class="btn"
-                id="dispViewBvn">View my BVN</div>
-            <div id="dispBvn" class="fw-bold"></div>
-        </div>
+        <div style="color: #e042b3 ;" class="btn" id="dispBvn">View my BVN</div>
     </div>
 
     <div class="container">
-        <div type="button" data-bs-toggle="modal" data-bs-target="#ModalAirtime"
-            class="d-flex justify-content-between container p-3 bg-light mt-3 rounded btn">
-            <span>Analytics</span>
-            <i class="fa-solid fa-angle-right"></i>
-        </div>
-        <a href="change-pin.html" type="button"
-            class="d-flex justify-content-between container p-3 bg-light mt-3 rounded btn">
-            <span>PIN</span>
+        <a href="analytics.html" class="d-flex justify-content-between container p-3 bg-light mt-3 rounded btn">
+            <span class="text-decoration-none text-dark">Analytics</span>
             <i class="fa-solid fa-angle-right"></i>
         </a>
-        <div type="button" data-bs-toggle="modal" data-bs-target="#ModalAirtime"
-            class="d-flex justify-content-between container p-3 bg-light mt-3 rounded btn">
-            <span>Password</span>
-            <i class="fa-solid fa-angle-right"></i>
+        <div class="p-3 bg-light mt-3 rounded" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header d-flex justify-content-between" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        PIN & Password
+                    </button>
+                    <i class="fa-solid fa-angle-right fs-6"></i>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body p-0 bg-light">
+                        <a href="change-pin.html"
+                            class="d-flex justify-content-between p-2 px-3 mb-2 mt-2 bg-light-subtle btn d-block text-start rounded">
+                            <span>PIN</span>
+                            <i class="fa-solid fa-angle-right"></i>
+                        </a>
+                        <a href="change-password.html"
+                            class="d-flex justify-content-between p-2 px-3 bg-light-subtle btn d-block text-start rounded">
+                            <span>Password</span>
+                            <i class="fa-solid fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div type="button" data-bs-toggle="modal" data-bs-target="#ModalAirtime"
-            class="d-flex justify-content-between container p-3 bg-light mt-3 rounded btn">
+
+        <div type="button" class="d-flex justify-content-between container p-3 bg-light mt-3 rounded btn">
             <span>Account rules and policies</span>
             <i class="fa-solid fa-angle-right"></i>
         </div>
         <a href="signin.html" class="d-flex justify-content-between container p-3 bg-light mt-3 rounded btn">
-            <span>Logout</span>
-            <i class="fa-solid fa-angle-logout"></i>
+            <span>SIGN OUT</span>
+            <i class="fa-solid fa-right-from-bracket"></i>
         </a>
-    </div>
-
-    <form action="">
-        <input type="password" maxlength="1">
-    </form>
 
 
-
-    <!-- Modal for BVN security -->
-    <div class="modal fade" id="bvnViewModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Enter Password</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        id="closebutton"></button>
-                </div>
-                <div class="modal-body mt-2 mb-2">
-                    <small class=" text-muted">For security purposes we need to verify it's you,Kindly enter your
-                        Password</small>
-                    <input type="password" id="confirmBvn" placeholder="Enter your password" class="form-control mt-2">
-                    <small class="text-danger" id="invalidpassword"></small>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn text-light" style="background-color: #590140;"
-                        onclick="viewBvn()">Display BVN</button>
+        <!-- Modal for Details Update  -->
+        <div class="modal fade" data-bs-backdrop="static" id="editDetailsModal" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Details</h1>
+                        <button type="button" class="fa-solid fa-close p-2" data-bs-dismiss="modal" aria-label="Close"
+                            id="closemodal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">First Name</label>
+                                <input type="text" class="form-control" placeholder="First Name" id="fname">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Last Name</label>
+                                <input type="text" class="form-control" placeholder="Last Name" id="lname">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Email</label>
+                                <input type="text" class="form-control" placeholder="Email" id="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Phone Number</label>
+                                <input type="text" class="form-control" placeholder="Phone Number" id="phone">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Enter your password</label>
+                                <input type="password" class="form-control" placeholder="Enter password" id="pass">
+                                <small class="text-danger" id="incorrectPassword"></small>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn text-light" onclick="edit()" id="editMe"
+                            style="background-color: #590140;">Save Changes</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal for Details Update  -->
-    <div class="modal fade" data-bs-backdrop="static" id="editDetailsModal" tabindex="-1"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Details</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        id="closebutton"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">First Name</label>
-                            <input type="text" class="form-control" placeholder="First Name" id="fname">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Last Name</label>
-                            <input type="text" class="form-control" placeholder="Last Name" id="lname">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Email</label>
-                            <input type="text" class="form-control" placeholder="Email" id="email">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Phone Number</label>
-                            <input type="text" class="form-control" placeholder="Phone Number" id="phone">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Enter your password</label>
-                            <input type="password" class="form-control" placeholder="Enter password" id="pass">
-                            <small class="text-danger" id="incorrectPassword"></small>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn text-light" onclick="edit()" id="editMe"
-                        style="background-color: #590140;">Save Changes</button>
+        <!-- Modal for Update profile photo -->
+        <div class="modal fade" data-bs-backdrop="static" id="updateProfilePhoto" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Upload Photo</h1>
+                        <button type="button" class="fa-solid fa-close p-2" data-bs-dismiss="modal" aria-label="Close"
+                            id="closemodal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="" alt="">
+                        <form>
+                            <div class="input-group mb-3">
+                                <input type="file" accept="image/jpeg, image/png, image/jpg" class="form-cntrol" id="uploadedPhoto">
+                                <label class="input-group-text" for="inputGroupFile0">Upload Image</label>
+                              </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn text-light" onclick="updateDP()"
+                            style="background-color: #590140;">Update Photo</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <button type="button" id="myBtn">Hide</button>
 </body>
-<script src="profile.js"></script>
-<!-- <script>
-
-    var allUsers = []
-    var onlineUser = {}
-    if (localStorage.currentUser && localStorage.usersList) {
-        allUsers = JSON.parse(localStorage.getItem("usersList"))
-        onlineUser = JSON.parse(localStorage.getItem("currentUser"))
-        dispAccName.innerText = `${onlineUser.firstname} ${onlineUser.lastname}`
-        console.log(onlineUser)
-    }
-
-    const displayEditModal = () => {
-        fname.value = onlineUser.firstname
-        lname.value = onlineUser.lastname
-        email.value = onlineUser.email
-        phone.value = onlineUser.phoneNo
-    }
-
-    const edit = () => {
-        onlineUser.firstname = fname.value
-        onlineUser.lastname = lname.value
-        onlineUser.email = email.value
-        onlineUser.phoneNo = phone.value
-        updateUser = allUsers.find((item, index) => item.accountnumber == onlineUser.accountnumber)
-        if (onlineUser.password == pass.value) {
-            updateUser.firstname = onlineUser.firstname
-            updateUser.lastname = onlineUser.lastname
-            updateUser.email = onlineUser.email
-            updateUser.phone = onlineUser.phone
-            updateUser.bvn = onlineUser.bvn
-
-            localStorage.setItem("usersList", JSON.stringify(allUsers))
-            localStorage.setItem('currentUser', JSON.stringify(onlineUser))
-            alert("Changes Saved")
-            window.location = "profile.html"
-        } else {
-            incorrectPassword.innerText = "Incorrect Password"
-            pass.classList.add("is-invalid")
-        }
-
-        console.log(onlineUser)
-    }
-    console.log(allUsers)
-
-    const resetPinNPassword = () => {
-        dispResetPinPassword.innerHTML = `
-            <div class="col-12 col-lg-6 m-auto d-lg-flex d-sm-inline">
-                <div class="btn btn-light col-12 col-md-6 d-flex justify-content-between" onclick="changePin()">
-                    <span >Change Transaction Pin</span>
-                    <i class="fa-solid fa-angle-right"></i>
-                </div>
-                <div class="btn btn-light col-12 col-md-6 d-flex justify-content-between">
-                    <span>Change Password</span>
-                    <i class="fa-solid fa-angle-right"></i>
-                </div>
-            </div>
-            `
-        pinandpassword.style.display = "none"
-        console.log(onlineUser.transactionPin)
-    }
-
-    const changePin = () => {
-        window.location = "change-pin.html"
-    }
-
-    const changeTransactionPin = () => {
-        console.log(onlineUser.transactionPin)
-    }
-
-    const test = () => {
-        var files = imag.files[0]
-        let file_name = files.name;
-        console.log(files, file_name)
-        profilephoto.src = `${file_name}`
-    }
-
-    const viewBvn = () => {
-        if (confirmBvn.value == onlineUser.password) {
-            dispBvn.innerText = `BVN: ${onlineUser.bvn}`
-            confirmBvn.value = ""
-        } else {
-            confirmBvn.classList.add("is-invalid")
-            invalidpassword.innerHTML = "Incorrect password"
-            alert("Incorrect Password")
-            confirmBvn.value = ""
-
-        }
-    }
-
-</script> -->
+<script src="/js/profile.js"></script>
 
 </html>
