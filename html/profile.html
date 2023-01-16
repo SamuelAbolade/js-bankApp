@@ -27,7 +27,7 @@
 <body>
     <div class="navbar bg-light" id="topNav" style="background-color: whitesmoke; height: 50px;">
         <div class="container container-fluid">
-            <a href="profile.html" style="color: #590140" class="btn">
+            <a href="dashboard.html" style="color: #590140" class="btn">
                 <i class="fa-solid fa-angle-left"></i>
             </a>
             <span class="m-auto">Profile</span>
@@ -39,53 +39,11 @@
             </div>
         </div>
     </div>
-<style>
-    output{
-  width: 100%;
-  min-height: 150px;
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 15px;
-  position: relative;
-  border-radius: 5px;
-}
-
-output .image{
-  height: 150px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  position: relative;
-}
-
-output .image img{
-  height: 100%;
-  width: 100%;
-}
-
-output .image span {
-  position: absolute;
-  top: -4px;
-  right: 4px;
-  cursor: pointer;
-  font-size: 22px;
-  color: white;
-}
-
-output .image span:hover {
-  opacity: 0.8;
-}
-
-output .span--hidden{
-  visibility: hidden;
-}
-</style>
-    <input type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
 
     <div class="m-auto text-center">
-        <button data-bs-toggle="modal" data-bs-target="#updateProfilePhoto" data-bs-whatever="@getbootstrap" class="m-auto mt-5 rounded-circle border border-dange p-0 btn" style="width: 80px; height:80px;">
-        <img src="" id="profilePhoto" style="width: 80px; height: 80px;" class="rounded-circle" alt="">
+        <button data-bs-toggle="modal" data-bs-target="#updateProfilePhoto" data-bs-whatever="@getbootstrap"
+            class="m-auto mt-5 rounded-circle border border-dange p-0 btn" style="width: 80px; height:80px;">
+            <img src="" id="profilePhoto" style="width: 80px; height: 80px;" class="rounded-circle" alt="">
         </button>
         <h5 class="text-center mt-4">
             <div id="dispAccName" class="fw-bold text-uppercase"></div>
@@ -147,14 +105,14 @@ output .span--hidden{
                     </div>
                     <div class="modal-body">
                         <form>
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">First Name</label>
                                 <input type="text" class="form-control" placeholder="First Name" id="fname">
                             </div>
                             <div class="mb-3">
                                 <label for="message-text" class="col-form-label">Last Name</label>
                                 <input type="text" class="form-control" placeholder="Last Name" id="lname">
-                            </div>
+                            </div> -->
                             <div class="mb-3">
                                 <label for="message-text" class="col-form-label">Email</label>
                                 <input type="text" class="form-control" placeholder="Email" id="email">
@@ -193,9 +151,10 @@ output .span--hidden{
                         <img src="" alt="">
                         <form>
                             <div class="input-group mb-3">
-                                <input type="file" accept="image/jpeg, image/png, image/jpg" class="form-cntrol" id="uploadedPhoto">
+                                <input type="file" accept="image/jpeg, image/png, image/jpg" class="form-cntrol"
+                                    id="uploadedPhoto">
                                 <label class="input-group-text" for="inputGroupFile0">Upload Image</label>
-                              </div>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -206,7 +165,6 @@ output .span--hidden{
                 </div>
             </div>
         </div>
-        <button type="button" id="myBtn">Hide</button>
 </body>
 <script src="/js/profile.js"></script>
 

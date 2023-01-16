@@ -1,37 +1,48 @@
+var imageFile
+var imageUrl
+var onlineUser
+var allUsers
+const generateImageUrl = new FileReader()
+
+const editDetailsModal = document.getElementById('editDetailsModal')
+const uploadedPhoto1 = document.getElementById('fname')
 
 /* Profile details page */
-var imageUrl
 if (localStorage.currentUser && localStorage.usersList) {
     allUsers = JSON.parse(localStorage.getItem("usersList"))
     onlineUser = JSON.parse(localStorage.getItem("currentUser"))
     dispAccName.innerText = `${onlineUser.firstname} ${onlineUser.lastname}`
     console.log(onlineUser)
-    imageUrl = localStorage.getItem("thumbnail")
-    profilePhoto.src = onlineUser.profilePhoto
+    if (onlineUser.profilePhoto !== "") {
+        displayProfilePhoto()
+    }else{
+        profilePhoto.src = "../images/user-icon.png"
+    }
+    console.log(onlineUser)
+    console.log(allUsers)
+    // imageUrl = localStorage.getItem("thumbnail")
+    // profilePhoto.src = onlineUser.profilePhoto
 }else{
-    imageUrl
+    window.location="signup.html"
 }
+// alert("Hello")
 
-console.log(imageUrl)
+
 
 // Display user details in inputs
 const displayEditModal = () => {
-    fname.value = onlineUser.firstname
-    lname.value = onlineUser.lastname
+    // fname.value = onlineUser.firstname
+    // lname.value = onlineUser.lastname
     email.value = onlineUser.email
     phone.value = onlineUser.phoneNo
 }
 
 // Save edited details
 const edit = () => {
-    onlineUser.firstname = fname.value
-    onlineUser.lastname = lname.value
     onlineUser.email = email.value
     onlineUser.phoneNo = phone.value
     updateUser = allUsers.find((item, index) => item.accountnumber == onlineUser.accountnumber)
     if (onlineUser.password == pass.value) {
-        updateUser.firstname = onlineUser.firstname
-        updateUser.lastname = onlineUser.lastname
         updateUser.email = onlineUser.email
         updateUser.phone = onlineUser.phone
         updateUser.bvn = onlineUser.bvn
@@ -44,6 +55,7 @@ const edit = () => {
         pass.classList.add("is-invalid")
     }
 }
+
 // display BVN to user
 dispBvn.addEventListener("click", () => {
     dispBvn.innerText = `BVN ${onlineUser.bvn}`
@@ -51,22 +63,41 @@ dispBvn.addEventListener("click", () => {
         dispBvn.innerText = `View my BVN`
     }, 5000);
 })
-    var imageFile
-    uploadedPhoto.addEventListener("change", (event)=>{
-        imageFile = event.target.files[0]
-        const generateUrl = new FileReader()
-        generateUrl.readAsDataURL(imageFile)
-        generateUrl.addEventListener('load', () => {
-            onlineUser.profilePhoto = generateUrl.result
-            console.log(generateUrl.result)
-            localStorage.setItem('currentUser',JSON.stringify(onlineUser));
-            window.location="profile.html"
-            // profilePhoto.src = generateUrl.result
-        });
-    })
 
-    $(document).ready(function(){
-        $("#myBtn").click(function(){
-          $("#updateProfilePhoto").modal();
-        });
-      });
+
+// Change profile photo
+uploadedPhoto.addEventListener("change", (event) => {
+    imageFile = uploadedPhoto.files[0]
+    generateImageUrl.readAsDataURL(imageFile)
+})
+
+const updateDP = () => {
+    onlineUser.profilePhoto = generateImageUrl.result
+    updateUser = allUsers.find((item, index) => item.accountnumber == onlineUser.accountnumber)
+    updateUser.profilePhoto = generateImageUrl.result
+    console.log(generateImageUrl.result)
+    localStorage.setItem('currentUser', JSON.stringify(onlineUser));
+    console.log(allUsers)
+    localStorage.setItem('usersList', JSON.stringify(allUsers));
+    displayProfilePhoto()
+}
+
+function displayProfilePhoto() {
+    if (onlineUser.profilePhoto !== "") {
+        profilePhoto.src = onlineUser.profilePhoto
+
+    } else {
+        onlineUser.profilePhoto = ""
+    }
+    // imageUrl = localStorage.getItem()
+}
+
+
+
+
+
+    // $(document).ready(function(){
+    //     $("#myBtn").click(function(){
+    //       $("#updateProfilePhoto").modal();
+    //     });
+    //   });
