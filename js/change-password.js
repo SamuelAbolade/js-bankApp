@@ -7,7 +7,7 @@ if (localStorage.usersList && localStorage.currentUser) {
 
 var passwords = []
 var enteredOldPassword = false
-var enterdedNewPassword = false
+var enteredNewPassword = false
 
 const changePassword = () => {
     let validatePassword = /^([\w]{3,10})+$/
@@ -18,24 +18,24 @@ const changePassword = () => {
         enteredOldPassword = true
         passwordTyped.value = ""
         console.log(passwords)
-    } else if (enteredOldPassword && enterdedNewPassword==false && passwords.length==1 && checkPasswordValidation){
+    } else if (enteredOldPassword && enteredNewPassword==false && passwords.length==1 && checkPasswordValidation){
         passwords.push(passwordTyped.value)
         passwordToEnter.innerText = "Confirm your New Password"
-        enterdedNewPassword = true
+        enteredNewPassword = true
         passwordTyped.value = ""
         console.log(passwords)
-    }else if (enterdedNewPassword && enteredOldPassword && passwords.length==2 && checkPasswordValidation){
+    }else if (enteredNewPassword && enteredOldPassword && passwords.length==2 && checkPasswordValidation){
         passwords.push(passwordTyped.value)
         console.log(passwords)
         passwordTyped.value = ""
         if(passwords[1]== passwords[2] && passwords[0]==onlineUser.password){
+            onlineUser.password = passwords[2]
             updateUser = allUsers.find((item, index) => item.accountnumber == onlineUser.accountnumber)
             updateUser.password = onlineUser.password
-            onlineUser.password = passwords[2]
             localStorage.setItem("usersList", JSON.stringify(allUsers))
             localStorage.setItem('currentUser', JSON.stringify(onlineUser))
             console.log(onlineUser.password)
-            alert("Password Chnaged")
+            alert("Password Changed")
             changePasswordSuccess.innerHTML=`
             <div class="text-center col-8 m-auto mt-5">
                 <i class="fa-solid fa-check fs-1 text-light p-3 rounded-circle" style="background-color:#590140"></i>
@@ -46,15 +46,11 @@ const changePassword = () => {
             passwordToEnter.innerText = "Enter your New Password"
             passwords = []
             enteredOldPassword = false
-            enterdedNewPassword = false
+            enteredNewPassword = false
             // var enteredOldPassword = false
-            // var enterdedNewPassword = false
-            alert("Passswords does not match")
+            // var enteredNewPassword = false
+            alert("Passwords does not match")
         }
     }
-    if(checkPasswordValidation==false){
-        passwordTyped.classList.add("is-invalid")
-    }else if (checkPasswordValidation){
-        passwordTyped.classList.remove("is-invalid")
-    }
+
 }
