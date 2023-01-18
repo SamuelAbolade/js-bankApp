@@ -9,6 +9,7 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <style>
     #glass {
@@ -30,9 +31,9 @@
 
 <body>
 
-    <div id="glass" class="col-12 col-lg-6 m-auto shadow p-3 mt-lg-5 rounded-lg rounded-lg-5">
+    <div id="glass" class="col-10 col-md-8 col-lg-5 m-auto mt-5 rounded shadow rounded rounded-4 p-3">
         <div class="col-3 m-auto p-3">
-            <img src="./images/VBANK-TRANSPARENT-02.png" class="w-100" alt="">
+            <img src="../images/VBANK.ico" class="w-100" alt="">
         </div>
         <h6 class="text-center fw-bold">CREATE AN ACCOUNT WITH US</h6>
         <small id="invalidDetails" class="alert alert-danger text-danger text-center fw-bold m-auto border" style="display: none;"></small>
@@ -80,7 +81,7 @@
             </div><br>
 
             <div class="form-floating col-12">
-                <select id="country" name=" country" class="form-control mb-0">
+                <select id="country" name=" country" class="form-select mb-0">
                     <option value="" class="disabled"></option>
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="Åland Islands">Åland Islands</option>
@@ -510,8 +511,8 @@
                     password: pass.value,
                     accountbalance: 1000,
                     accountnumber: accNo,
-                    transactionPin: 1234
-                    // accountnumber : 
+                    transactionPin: 1234,
+                    profilePhoto: ""
                 }
                 allUsers.push(userDetails)
                 console.log(allUsers)

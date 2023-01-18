@@ -130,6 +130,26 @@ nav a {
   text-decoration: none;
   color: #AC3282;
 }
+#closemodal {
+  border: 0;
+  outline: none !important;
+  box-shadow: none;
+  background-color: #590140;
+  color: white !important;
+  width: 50px;
+  border-radius: 20px;
+}
+
+.navbar a {
+  color: #590140;
+}
+.form-control:focus, .form-select:focus {
+color: black;
+background-color: #fff;
+border:2px solid #a32981;
+outline: 3px;
+box-shadow: 0 0 0 0 white;
+}
 
 /* .fade-in {
     animation: fadeIn ease 10s;

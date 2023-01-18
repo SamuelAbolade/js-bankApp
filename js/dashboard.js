@@ -1,7 +1,6 @@
 var allUsers = []
 var onlineUser = {}
 var allTransfer = []
-var turnOnDarkMode = false
 var hideBalance = false
 var onlineUserTransactionDetails = []
 var debitTransactions
@@ -33,19 +32,18 @@ if (localStorage.usersList && localStorage.currentUser) {
     window.location = "index.html"
 }
 
-
 function displayUserDetails() {
     helloUser.innerHTML = `Hello, ${onlineUser.firstname}`
     accountBalance.innerHTML = `${onlineUser.accountbalance}.00`
     dispAccNo.innerText = `${onlineUser.accountnumber}`
     if (onlineUserTransactionDetails.length > 0) {
-        onlineUserTransactionDetails.reverse() 
+        onlineUserTransactionDetails.reverse()
         onlineUserTransactionDetails.map((item, index) => {
             if (item.senderAccountNumber == onlineUser.accountnumber) {
-                dispHistory.innerHTML+= `                            
+                dispHistory.innerHTML += `                            
                 <div class="p-3 mt-3 bg-light rounded" style="border-left:2px solid red"> 
                      <div class="d-flex justify-content-between">
-                         <small class="fw-bold" style="color:#590140">Transfer to ${item.recieverFirstname}</small>
+                         <small class="fw-bold" style="color:#590140">Transfer &#8358;${item.amountRecieved} to ${item.recieverFirstname}</small>
                          <small class="fw-bold" style="color:#590140">${item.dateSent} ${item.timeSent}</small>
                      </div>
                      <details>
@@ -73,7 +71,7 @@ function displayUserDetails() {
                 </div>
                 `
             } else {
-                dispHistory.innerHTML+= `
+                dispHistory.innerHTML += `
                 <div class="p-3 mt-3 rounded bg-light" style="border-left:2px solid green">
                 <div class="d-flex justify-content-between">
                     <small class="fw-bold" style="color:#590140">Recieved &#8358;${item.amountRecieved} from ${item.senderFirstname}</small>
@@ -129,42 +127,9 @@ const displayBalance = () => {
         dispBalance.innerHTML = `<i class="fa-solid fa-eye btn text-light"></i>`
         console.log(onlineUser.accountbalance)
     }
-}
+}   
 
 //copy account number
 copyAccNo.addEventListener("click", () => {
     navigator.clipboard.writeText(dispAccNo.innerText)
 })
-
-
-// checks if entered account number exists
-transferTo.addEventListener('input', () => {
-    let findUser = allUsers.find((item) => item.accountnumber == (
-        transferTo.value))
-    // findUser
-    findUser ? accountName.innerText = `${findUser.firstname} ${findUser.lastname}` : accountName.innerText = ""
-})
-
-
-transferAmount.addEventListener('input', () => {
-    if (onlineUser.accountbalance < transferAmount.value) {
-        insufficientBalance.innerText = `Insufficient Balance`
-    } else {
-        insufficientBalance.innerText = ``
-    }
-})
-
-
-const profileDetails = () => {
-    userDetails.innerHTML = `
-            <div class="">
-                <div class="mt-4 d-flex justify-content-between" ><span class="fw-bold">ACCOUNT NAME:</span> <span class="text-uppercase">${onlineUser.firstname} ${onlineUser.lastname}</div>
-                <div class="mt-4 d-flex justify-content-between" ><span class="fw-bold">ACCOUNT NUMBER:</span> <span class="text-uppercase"> ${onlineUser.accountnumber}</div>
-                <div class="mt-4 d-flex justify-content-between" ><span class="fw-bold">EMAIL:</span> <span class="text-lowercase"> ${onlineUser.email}</div>
-                    <div class="mt-4 d-flex justify-content-between" ><span class="fw-bold">PHONE NUMBER:</span> <span class="text-uppercase"> ${onlineUser.phoneNo}</div>
-                <div class="mt-4 d-flex justify-content-between" ><small class="fw-bold">BANK VERIFICATION NUMBER(BVN):</small> <span class="text-uppercase"> ${onlineUser.bvn}</div>
-                
-            </div>
-            
-            `
-}

@@ -17,12 +17,12 @@
 
     <!-- Font-Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <style>
     .navbar a {
         color: #590140;
     }
-
 </style>
 
 <body>
@@ -71,22 +71,49 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Target Savings Account</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="fa-solid fa-close p-2" id="closemodal" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <select name="" id="">
-                            <option value="" class="form-control"></option>
-                        </select>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Mobile Number:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                        <div class="mb-3 form-floating">
+                            <input type="text" class="form-control" id="Initial-amount">
+                            <label for="recipient-name" class="col-form-label">What are you saving for?</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <input type="text" class="form-control" id="Initial-amount">
+                            <label for="recipient-name" class="col-form-label">Initial-amount:</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <input type="text" class="form-control" id="Initial-amount">
+                            <label for="recipient-name" class="col-form-label">Initial-amount:</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <input type="text" class="form-control" id="Recurring amount">
+                            <label for="recipient-name" class="col-form-label">Recurring amount:</label>
+                        </div>
+                        <div class="input-group w-5 mb-3 form-floating">
+                            <span class="input-group-text p-0 px-2 text-light" style="background-color: #590140;">Start Date</span>
+                            <input type="month" class="form-control w-50" name="" id="">
+                        </div>
+                        <div class="input-group w-5 mb-3 form-floating">
+                            <span class="input-group-text p-0 px-2 text-light" style="background-color: #590140" >End Date</span>
+                            <input type="month" class="form-control w-50" name="" id="">
+                        </div>
+                        <div class="form-floating">
+                            <select id="" class="mb-3 form-select">
+                                <option value="Daily">Daily</option>
+                                <option value="Weekly">Weekly</option>
+                                <option value="Monthly">Monthly</option>
+                            </select>
+                            <label for="">Select Frequency</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn text-light" data-bs-dismiss="modal" style="background-color: #8d7787;">Close</button>
-                    <button type="button" class="btn text-light" style="background-color: #590140;">Understood</button>
+                    <button type="button" class="btn text-light" data-bs-dismiss="modal"
+                        style="background-color: #8d7787;">Close</button>
+                    <button type="button" class="btn text-light" style="background-color: #590140;">Continue</button>
                 </div>
             </div>
         </div>
@@ -100,17 +127,18 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Open a fixed deposit account</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="fa-solid fa-close p-2" id="closemodal" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <select name="" id="">
-                            <label for=""></label>
-                            <input type="text" class="form-control">
-                        </select>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Mobile Number:</label>
+                        <div class="mb-3 form-floating">
+                            <input type="text" class="form-control" id="Initial-amount">
+                            <label for="recipient-name" class="col-form-label">Account Name</label>
+                        </div>
+                        <div class="mb-3 form-floating">
                             <input type="text" class="form-control" id="recipient-name">
+                            <label for="recipient-name" class="col-form-label">Mobile Number:</label>
                         </div>
                     </form>
                 </div>
@@ -132,17 +160,18 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Open a joint/shared account</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="fa-solid fa-close p-2" id="closemodal" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <select name="" id="">
-                            <label for=""></label>
-                            <input type="text" class="form-control">
-                        </select>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Mobile Number:</label>
+                        <div class="mb-3 form-floating">
+                            <input type="text" class="form-control" id="Initial-amount">
+                            <label for="recipient-name" class="col-form-label">Account Name</label>
+                        </div>
+                        <div class="mb-3 form-floating">
                             <input type="text" class="form-control" id="recipient-name">
+                            <label for="recipient-name" class="col-form-label">Mobile Number:</label>
                         </div>
                     </form>
                 </div>
@@ -163,14 +192,15 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Loan</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="fa-solid fa-close p-2" id="closemodal" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <small>Contact Information</small>
                         <div>
                             <label for="title" class="fw-bold">Title<span class="text-danger">*</span></label>
-                            <select id="title" class="mb-3 form-control">
+                            <select id="title" class="mb-3 form-select">
                                 <option value="Mr">Mr.</option>
                                 <option value="Mrs">Mrs.</option>
                                 <option value="Miss">Miss.</option>
@@ -279,7 +309,7 @@
                             <label for="comment" class="fw-bold">Comments</label>
                             <textarea name="" id="" cols="20" rows="8" class="form-control"></textarea>
                         </div>
-                        <div class="border border-danger rounded p-3">
+                        <div class="rounded p-3" style="border: 2px solid #af037e;">
                             <p>
                                 I authorize prospective Credit Grantors/Lending/Leasing Companies to obtain personal and
                                 credit information about me from my employer and credit bureau, or credit reporting

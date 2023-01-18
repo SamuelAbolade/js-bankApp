@@ -37,22 +37,26 @@
         </div>
     </div>
 
-    <div class="col-8 col-lg-6 col-md-5 m-auto">
+    <div class="col-10 col-lg-6 col-md-5 m-auto">
         <form>
-            <div class="mb-3">
-                <label for="message-text" class="col-form-label">Account Number:</label>
-                <input type="number" class="form-control" id="transferTo" placeholder="Transfer To">
-                <small id="accountName" class="text-success fw-bold"></small>
+            <div class="mb-3 mt-3">
+                <div class="form-floating ">
+                    <input type="number" class="form-control" id="transferTo" placeholder="">
+                    <label for="message-text" class="col-form-label" style="color: #590140;">Account Number:</label>
+                </div>
+                <small id="accountName" class="fw-bold" style="color: #a32981;"></small>
                 <small id="invalidUser" class="text-danger fw-bold"></small>
             </div>
             <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Amount:</label>
-                <input type="number" class="form-control text-number" id="transferAmount" placeholder="Transfer amount">
+                <div class="mb-1 form-floating">
+                    <input type="number" class="form-control text-number" id="transferAmount" placeholder="">
+                    <label for="recipient-name" class="col-form-label" style="color: #590140;">Amount:</label>
+                </div>
                 <small id="insufficientBalance" class="text-danger fw-bold"></small>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 form-floating">
+                <textarea type="number" style="height: 70px;" class="form-control text-number" id="remark" placeholder=""></textarea>
                 <label for="recipient-name" class="col-form-label">Remark:</label>
-                <input type="number" class="form-control text-number" id="remark" placeholder="Remark">
             </div>
         </form>
         <div class="text-center">
@@ -65,11 +69,11 @@
     <!-- Modal for transfer confirmation -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
         data-bs-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    <h1 class="modal-title fs-6" id="exampleModalLabel">Confirm Reciever details</h1>
+                    <button type="button" class="fa-solid fa-close p-2" data-bs-dismiss="modal" aria-label="Close"
                         id="closemodal"></button>
                 </div>
                 <div class="modal-body">
@@ -77,77 +81,75 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#transactionPinModal" data-bs-whatever="getbootstrap">Continue</button>
+                    <button type="button" class="btn text-light" data-bs-toggle="modal"
+                        data-bs-target="#transactionPinModal" data-bs-whatever="getbootstrap" style="background-color: #a32981;">Continue</button>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Modal for transaction pin -->
     <div class="modal fade" id="transactionPinModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <button type="button" class="btn-close m-auto p-3" data-bs-dismiss="modal" aria-label="Close"
-                    id="closemodal"></button>
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5 m-auto" id="exampleModalLabel">Enter Transaction Pin</h1>
+                    <h1 class="modal-title fs-6" id="exampleModalLabel">Enter Transaction Pin</h1>
+                    <button type="button" class="fa-solid fa-close p-2" data-bs-dismiss="modal" aria-label="Close"
+                        id="closemodal"></button>
                 </div>
                 <small id="incorrectPin" class="m-auto text-center text-danger"></small>
                 <div class="modal-body">
 
-                    <div class="text-center col-6 d-flex m-auto mb-2">
-                        <span class="w-25 text-center fw-bolder border" id="pinDigitOne"
-                            style="height:55px; width:55px; font-size: 2em; line-height: 45px;"></span>
-                        <span class="w-25 text-center fw-bolder border" id="pinDigitTwo"
-                            style="height:55px; width:55px; font-size: 2em; line-height: 45px;"></span>
-                        <span class="w-25 text-center fw-bolder border" id="pinDigitThree"
-                            style="height:55px; width:55px; font-size: 2em; line-height: 45px;"></span>
-                        <span class="w-25 text-center fw-bolder border" id="pinDigitFour"
-                            style="height:55px; width:55px; font-size: 2em; line-height: 45px;"></span>
+                    <div class="text-center col-7 col-lg-6 d-flex m-auto mb-2">
+                        <span class="w-25 text-center fw-bolder m-1 shadow-sm border border-secondary rounded" id="pinDigitOne"
+                            style="height:50px; width:70px; font-size: 2em; line-height: 40px;"></span>
+                        <span class="w-25 text-center fw-bolder m-1 shadow-sm border border-secondary rounded" id="pinDigitTwo"
+                            style="height:50px; width:70px; font-size: 2em; line-height: 40px;"></span>
+                        <span class="w-25 text-center fw-bolder m-1 shadow-sm border border-secondary rounded" id="pinDigitThree"
+                            style="height:50px; width:70px; font-size: 2em; line-height: 40px;"></span>
+                        <span class="w-25 text-center fw-bolder m-1 shadow-sm border border-secondary rounded" id="pinDigitFour"
+                            style="height:50px; width:70px; font-size: 2em; line-height: 40px;"></span>
                     </div>
 
                     <div class="text-center col-7 m-auto m">
                         <div class="d-flex justify-content-center" style="text-align: center;">
-                            <div class="btn btn-secondary border border-light px-4 py-3" onclick="typePin(event)">1
+                            <div class="btn border border-light px-4 py-3 text-light" style="background-color: #590140;" onclick="typePin(event)">1
                             </div>
-                            <div class="btn btn-secondary border border-light px-4 py-3" onclick="typePin(event)">2
+                            <div class="btn border border-light px-4 py-3 text-light" style="background-color: #590140;" onclick="typePin(event)">2
                             </div>
-                            <div class="btn btn-secondary border border-light px-4 py-3" onclick="typePin(event)">3
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-center">
-                            <div class="btn btn-secondary border border-light px-4 py-3" onclick="typePin(event)">4
-                            </div>
-                            <div class="btn btn-secondary border border-light px-4 py-3" onclick="typePin(event)">5
-                            </div>
-                            <div class="btn btn-secondary border border-light px-4 py-3" onclick="typePin(event)">6
+                            <div class="btn border border-light px-4 py-3 text-light" style="background-color: #590140;" onclick="typePin(event)">3
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-center">
-                            <div class="btn btn-secondary border border-light px-4 py-3" onclick="typePin(event)">7
+                            <div class="btn border border-light px-4 py-3 text-light" style="background-color: #590140;" onclick="typePin(event)">4
                             </div>
-                            <div class="btn btn-secondary border border-light px-4  py-3" onclick="typePin(event)">8
+                            <div class="btn border border-light px-4 py-3 text-light" style="background-color: #590140;" onclick="typePin(event)">5
                             </div>
-                            <div class="btn btn-secondary border border-light px-4 py-3" onclick="typePin(event)">9
+                            <div class="btn border border-light px-4 py-3 text-light" style="background-color: #590140;" onclick="typePin(event)">6
                             </div>
                         </div>
-                        <div class="btn btn-secondary border border-light px-4 py-3" onclick="typePin(event)">0</div>
-                        <div class="btn btn-secondary border border-light px-5 py-3" onclick="clearPin()"><i
+
+                        <div class="d-flex justify-content-center">
+                            <div class="btn border border-light px-4 py-3 text-light" style="background-color: #590140;" onclick="typePin(event)">7
+                            </div>
+                            <div class="btn border border-light px-4  py-3 text-light" style="background-color: #590140;" onclick="typePin(event)">8
+                            </div>
+                            <div class="btn border border-light px-4 py-3 text-light" style="background-color: #590140;" onclick="typePin(event)">9
+                            </div>
+                        </div>
+                        <div class="btn border border-light px-4 py-3 text-light" style="background-color: #590140;" onclick="typePin(event)">0</div>
+                        <div class="btn border border-light px-5 py-3 text-light" style="background-color: #590140;" onclick="clearPin()"><i
                                 class="fa-solid fa-backspace"></i></div>
                     </div>
                 </div>
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-primary col-lg-6" id="btnSendMoney"
-                        onclick="transfer()">Confirm</button>
+                    <button type="button" class="btn text-light col-lg-6" id="btnSendMoney"
+                        onclick="transfer()" style="background-color: #a32981;" >Transfer</button>
                 </div>
             </div>
         </div>
     </div>
-<script src="/js/transfer.js"></script>
 </body>
-
+<script src="/js/transfer.js"></script>
 </html>

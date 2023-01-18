@@ -14,7 +14,7 @@ new Chart("analyticsChart", {
             data: yValues
         }]
     },
-    options: {
+  options: {
         title: {
             display: false,
             text: "Analytics chart"

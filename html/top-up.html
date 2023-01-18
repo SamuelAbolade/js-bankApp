@@ -17,6 +17,8 @@
 
     <!-- Font-Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <style>
     #closemodal {
@@ -70,17 +72,17 @@
     <!-- Modal for airtime-->
     <div class="modal fade" id="ModalAirtime" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Airtime</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    <button type="button" class="fa-solid fa-close p-2" data-bs-dismiss="modal" aria-label="Close"
                         id="closemodal"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <label for="provider">Provider:</label>
-                        <select name="" id="provider" class="form-control">
+                        <select name="" id="provider" class="form-select">
                             <option value="">Select Provider</option>
                             <option value="mtn">MTN</option>
                             <option value="glo">GLO</option>
@@ -88,8 +90,13 @@
                             <option value="mtn">9MOBILE</option>
                         </select>
                         <div class="mb-3">
+                            <label for="mobileNo" class="col-form-label">Amount:</label>
+                            <input type="number" placeholder="Amount" class="form-control"
+                                id="mobileNo">
+                        </div>
+                        <div class="mb-3">
                             <label for="mobileNo" class="col-form-label">Mobile Number:</label>
-                            <input type="number" placeholder="Mobile Number " class="form-control" maxlength="2px"
+                            <input type="number" placeholder="Mobile Number " class="form-control"
                                 id="mobileNo">
                         </div>
                     </form>
@@ -109,18 +116,33 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Data Subscriptions</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    <button type="button" class="fa-solid fa-close p-2" data-bs-dismiss="modal" aria-label="Close"
                         id="closemodal"></button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <select name="" id="">
-                            <label for=""></label>
-                            <input type="text" class="form-control">
+                        <label for="provider">Provider:</label>
+                        <select name="" id="provider" class="form-select">
+                            <option value="">Select Provider</option>
+                            <option value="mtn">MTN</option>
+                            <option value="glo">GLO</option>
+                            <option value="mtn">AIRTEL</option>
+                            <option value="mtn">9MOBILE</option>
                         </select>
                         <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Mobile Number:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <label for="provider">Provider:</label>
+                            <select name="" id="provider" class="form-select">
+                                <option value="">Select Data Bundle</option>
+                                <option value="mtn">MTN</option>
+                                <option value="glo">GLO</option>
+                                <option value="mtn">AIRTEL</option>
+                                <option value="mtn">9MOBILE</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mobileNo" class="col-form-label">Mobile Number:</label>
+                            <input type="number" placeholder="Mobile Number " class="form-control"
+                                id="mobileNo">
                         </div>
                     </form>
                 </div>

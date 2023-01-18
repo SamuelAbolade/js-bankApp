@@ -147,7 +147,6 @@ const clearPin = () => {
 }
 
 const transfer = () => {
-    console.log
     if (enteredPin == onlineUser.transactionPin) {
         console.log("userfound")
         console.log(findUser.accountbalance)
@@ -171,9 +170,10 @@ const transfer = () => {
             senderLastname: onlineUser.lastname,
             dateSent: date.toLocaleDateString(),
             timeSent: date.toLocaleTimeString(),
-            transactionId
+            transactionId,
+            remark: remark.value
         }
-        if (allTransfer !== null) {
+        if (allTransfer) {
             allTransfer.push(transferred)
         } else {
             allTransfer = []
@@ -189,6 +189,8 @@ const transfer = () => {
         pinDigitThree.innerText = ""
         pinDigitFour.innerText = ""
     } else {
+        console.log(enteredPin)
+        console.log(onlineUser.transactionPin)
         pinTyped = false
         enteredPin = ""
         pinDigitOne.innerText = ""
