@@ -35,7 +35,6 @@ const changePassword = () => {
             localStorage.setItem("usersList", JSON.stringify(allUsers))
             localStorage.setItem('currentUser', JSON.stringify(onlineUser))
             console.log(onlineUser.password)
-            alert("Password Changed")
             changePasswordSuccess.innerHTML=`
             <div class="text-center col-8 m-auto mt-5">
                 <i class="fa-solid fa-check fs-1 text-light p-3 rounded-circle" style="background-color:#590140"></i>
@@ -47,8 +46,6 @@ const changePassword = () => {
             passwords = []
             enteredOldPassword = false
             enteredNewPassword = false
-            // var enteredOldPassword = false
-            // var enteredNewPassword = false
             alert("Passwords does not match")
         }
     }

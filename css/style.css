@@ -151,6 +151,25 @@ outline: 3px;
 box-shadow: 0 0 0 0 white;
 }
 
+
+.swal-button{
+  padding: 7px 19px;
+  border-radius: 2px;
+  background-color: #590140;
+  font-size: 12px;
+  border: 0;
+  /* text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3); */
+}
+.swal-button::before{
+  padding: 2px 19px;
+  border-radius: 2px;
+  background-color: #590140;
+
+  font-size: 12px;
+  border: 1px solid red;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
+
 /* .fade-in {
     animation: fadeIn ease 10s;
     -webkit-animation: fadeIn ease 10s;

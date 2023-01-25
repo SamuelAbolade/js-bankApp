@@ -5,11 +5,25 @@ var hideBalance = false
 var onlineUserTransactionDetails = []
 var debitTransactions
 var creditTransactions
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 
 
 if (localStorage.usersList && localStorage.currentUser) {
     allUsers = JSON.parse(localStorage.getItem("usersList"))
     onlineUser = JSON.parse(localStorage.getItem("currentUser"))
+    onlineUser.firstTimeLogin && swal({  
+        title: `Welcome ${onlineUser.firstname} ${onlineUser.lastname}`,  
+        text: "Your account is being activated",  
+        icon: "success",  
+        button: "Ok",  
+    });
+    delete onlineUser.firstTimeLogin
+    localStorage.setItem("currentUser", JSON.stringify(onlineUser))
+    console.log(onlineUser)
+    updateUser = allUsers.find((item, index) => item.accountnumber == onlineUser.accountnumber)
+    delete updateUser.firstTimeLogin
+    localStorage.setItem("usersList", JSON.stringify(allUsers))
     if (localStorage.transferList) {
         allTransfer = JSON.parse(localStorage.getItem("transferList"))
         onlineUserTransactionDetails = allTransfer.filter((item, index) => item.senderAccountNumber == onlineUser.accountnumber || item.recieverAccountNumber == onlineUser.accountnumber)
@@ -43,17 +57,17 @@ function displayUserDetails() {
                 dispHistory.innerHTML += `                            
                 <div class="p-3 mt-3 bg-light rounded" style="border-left:2px solid red"> 
                      <div class="d-flex justify-content-between">
-                         <small class="fw-bold" style="color:#590140">Transfer &#8358;${item.amountRecieved} to ${item.recieverFirstname}</small>
+                         <small class="fw-bold" style="color:#590140">Transfer &#8358;${item.amountRecieved} to <span class="text-capitalize">${item.recieverFirstname}</span></small>
                          <small class="fw-bold" style="color:#590140">${item.dateSent} ${item.timeSent}</small>
                      </div>
-                     <details>
+                     <details style="color:#590140">
                          <div class="d-flex justify-content-between">
                              <span >STATUS:</span> 
                              <span class="fw-bold">SUCCESS</span>
                          </div>
                          <div class="d-flex justify-content-between">
                              <span class="">Transferred to:</span>
-                             <span class="fw-bold"> ${item.recieverFirstname} ${item.recieverLastname}<span>
+                             <span class="fw-bold text-capitalize"> ${item.recieverFirstname} ${item.recieverLastname}<span>
                          </div>
                          <div class="d-flex justify-content-between"> 
                              <span class="">Account Number:</span>
@@ -74,10 +88,10 @@ function displayUserDetails() {
                 dispHistory.innerHTML += `
                 <div class="p-3 mt-3 rounded bg-light" style="border-left:2px solid green">
                 <div class="d-flex justify-content-between">
-                    <small class="fw-bold" style="color:#590140">Recieved &#8358;${item.amountRecieved} from ${item.senderFirstname}</small>
+                    <small class="fw-bold" style="color:#590140">Recieved &#8358;${item.amountRecieved} from <span class="text-capitalize">${item.senderFirstname}</span></small>
                     <small class="fw-bold" style="color:#590140">${item.dateSent} ${item.timeSent}</small>
                 </div>
-                <details class="">
+                <details style="color:#590140">
                     <div class="d-flex justify-content-between">
                         <span>STATUS:</span> 
                         <span class="fw-bold">SUCCESS</span>

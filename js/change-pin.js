@@ -40,17 +40,17 @@ const changePin = () => {
         console.log("c")
         confirmNewPin = true
         if (pins[0] == onlineUser.transactionPin && pins[1] == pins[2]) {
+            onlineUser.transactionPin = pins[2]
             updateUser = allUsers.find((item, index) => item.accountnumber == onlineUser.accountnumber)
             updateUser.transactionPin = onlineUser.transactionPin
-            onlineUser.transactionPin = pins[2]
             localStorage.setItem("usersList", JSON.stringify(allUsers))
             localStorage.setItem('currentUser', JSON.stringify(onlineUser))
-            alert("PIN Changed")
+            // alert("PIN Changed")
             changePinSuccess.innerHTML = `
             <div class="text-center col-8 m-auto mt-5">
                 <i class="fa-solid fa-check fs-1 text-light p-3 rounded-circle" style="background-color:#590140"></i>
                 <h2 class="m-2 lh-base">Transaction-PIN successfully changed</h2>
-                <a href="/html/dashboard.html" class="btn text-light" style="background-color: #590140;">Go back to HOME</a>
+                <a href="dashboard.html" class="btn text-light" style="background-color: #590140;">Go back to HOME</a>
             </div>
         `
             console.log(onlineUser.transactionPin)

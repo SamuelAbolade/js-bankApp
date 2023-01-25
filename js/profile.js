@@ -31,8 +31,6 @@ if (localStorage.currentUser && localStorage.usersList) {
 
 // Display user details in inputs
 const displayEditModal = () => {
-    // fname.value = onlineUser.firstname
-    // lname.value = onlineUser.lastname
     email.value = onlineUser.email
     phone.value = onlineUser.phoneNo
 }
@@ -48,7 +46,6 @@ const edit = () => {
         updateUser.bvn = onlineUser.bvn
         localStorage.setItem("usersList", JSON.stringify(allUsers))
         localStorage.setItem('currentUser', JSON.stringify(onlineUser))
-        alert("Changes Saved")
         window.location = "profile.html"
     } else {
         incorrectPassword.innerText = "Incorrect Password"
@@ -85,19 +82,8 @@ const updateDP = () => {
 function displayProfilePhoto() {
     if (onlineUser.profilePhoto !== "") {
         profilePhoto.src = onlineUser.profilePhoto
-
     } else {
         onlineUser.profilePhoto = ""
     }
     // imageUrl = localStorage.getItem()
 }
-
-
-
-
-
-    // $(document).ready(function(){
-    //     $("#myBtn").click(function(){
-    //       $("#updateProfilePhoto").modal();
-    //     });
-    //   });

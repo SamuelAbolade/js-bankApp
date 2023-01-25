@@ -5,41 +5,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>V BANK</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<style>
-    #glass {
-        background: rgba(255, 255, 255, 0.68);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(2.6px);
-        -webkit-backdrop-filter: blur(2.6px);
-        border: 5px solid rgba(100, 97, 97, 0.21);
-    }
 
-    .form-control:focus {
-        color: black;
-        background-color: #fff;
-        border: 2px solid #a32981;
-        outline: 3px;
-        box-shadow: 0 0 0 0 white;
-    }
-</style>
 
 <body
 >
 
-    <div id="glass" class="col-10 col-md-8 col-lg-5 m-auto mt-5 rounded shadow rounded rounded-4 p-3">
-
+    <div id="glass" class="col-12 col-md-8 col-lg-5 m-auto mt-sm-5 bg-light rounded shadow rounded rounded-4 p-3">
+        <div class="col-3 m-auto p-3">
+            <img src="../images/VBANK.ico" class="w-100" alt="">
+        </div>
         <h5 class="text-center">Welcome to V!</h5>
+        <h5 class="text-center fw-bolder">SIGN IN</h5>
         <hr>
         <datalist id="incorrectDetails" class="alert  alert-danger text-center">Invalid Email or Password</datalist>
         <div class="col-12">
             <div class="form-floating col-12">
-                <input type="text" id="mailIn" placeholder="Email" class="form-control">
+                <input type="email" id="mailIn" placeholder="Email" class="form-control">
                 <label for="mailIn" class="text-muted">Email Address <span class="text-danger">*</span></label>
             </div>
             <small id="invalidEmail" class="text-danger"></small>
@@ -93,7 +80,6 @@
                 window.location = "dashboard.html"
             } else {
                 incorrectDetails.style.display = "block"
-                alert("Invalid info")
             }
         }
 

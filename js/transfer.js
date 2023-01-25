@@ -72,7 +72,7 @@ transferAmount.addEventListener("input", () => {
 
 const confirmRecieverDetails = () => {
     findUser = allUsers.find((item, index) => item.accountnumber == transferTo.value && item.accountnumber !== onlineUser.accountnumber)
-    transferPrompt.innerHTML = `You are about to transfer &#8358; <span class="fw-bold">${transferAmount.value}</span> to <br><span class="fw-bold">${findUser.firstname} ${findUser.lastname} (${findUser.accountnumber})</span>`
+    transferPrompt.innerHTML = `You are about to transfer &#8358;<span class="fw-bold">${transferAmount.value}</span> to <br><span class="fw-bold text-uppercase">${findUser.firstname} ${findUser.lastname} (${findUser.accountnumber})</span>`
 }
 
 
@@ -151,43 +151,56 @@ const transfer = () => {
         console.log("userfound")
         console.log(findUser.accountbalance)
         console.log(transferAmount.value)
-        findUser.accountbalance += Number(transferAmount.value)
-        console.log(findUser.accountbalance)
-        onlineUser.accountbalance = ((onlineUser.accountbalance) - (transferAmount.value))
-        console.log(onlineUser.accountbalance)
-        updateAllUsers = allUsers.find((item, index) => item.accountnumber == onlineUser.accountnumber)
-        updateAllUsers.accountbalance = onlineUser.accountbalance
-        let date = new Date()
+        btnSendMoney.innerHTML =`
+        <div class="spinner-grow" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>`
+        setTimeout(() => {
+            btnSendMoney.style.display="none"
+            findUser.accountbalance += Number(transferAmount.value)
+            console.log(findUser.accountbalance)
+            onlineUser.accountbalance = ((onlineUser.accountbalance) - (transferAmount.value))
+            console.log(onlineUser.accountbalance)
+            updateAllUsers = allUsers.find((item, index) => item.accountnumber == onlineUser.accountnumber)
+            updateAllUsers.accountbalance = onlineUser.accountbalance
+            let date = new Date()
+    
+            var transferred = {
+                amountTransferred: transferAmount.value,
+                amountRecieved: transferAmount.value,
+                recieverAccountNumber: findUser.accountnumber,
+                recieverFirstname: findUser.firstname,
+                recieverLastname: findUser.lastname,
+                senderAccountNumber: onlineUser.accountnumber,
+                senderFirstname: onlineUser.firstname,
+                senderLastname: onlineUser.lastname,
+                dateSent: date.toLocaleDateString(),
+                timeSent: date.toLocaleTimeString(),
+                transactionId,
+                remark: remark.value
+            }
+            if (allTransfer) {
+                allTransfer.push(transferred)
+            } else {
+                allTransfer = []
+                allTransfer.push(transferred)
+            }
+            
+            localStorage.setItem("usersList", JSON.stringify(allUsers))
+            localStorage.setItem("transferList", JSON.stringify(allTransfer))
+            localStorage.setItem('currentUser', JSON.stringify(onlineUser))
+            hideHeader.innerHTML =""
+            pinDisplay.innerHTML = `
+            <div class="text-center col-8 m-auto mt-2">
+                <i class="fa-solid fa-check fs-1 text-light p-3 rounded-circle" style="background-color:#590140"></i>
+                <h3 class="m-2 lh-base">Your transfer of <span class="">&#8358;${transferAmount.value}</span> to <span class="text-capitalize">${findUser.firstname} ${findUser.lastname}</span> was successful</h3>
+                <small class="mb-3">Kindly check transaction history for details</small>
+                <a href="dashboard.html" class="btn text-light mt-2" style="background-color: #590140;">Go back to HOME</a>
+            </div>`
+            pinTyped = false
+            // enteredPin = ""
+        }, 3000);
 
-        var transferred = {
-            amountTransferred: transferAmount.value,
-            amountRecieved: transferAmount.value,
-            recieverAccountNumber: findUser.accountnumber,
-            recieverFirstname: findUser.firstname,
-            recieverLastname: findUser.lastname,
-            senderAccountNumber: onlineUser.accountnumber,
-            senderFirstname: onlineUser.firstname,
-            senderLastname: onlineUser.lastname,
-            dateSent: date.toLocaleDateString(),
-            timeSent: date.toLocaleTimeString(),
-            transactionId,
-            remark: remark.value
-        }
-        if (allTransfer) {
-            allTransfer.push(transferred)
-        } else {
-            allTransfer = []
-            allTransfer.push(transferred)
-        }
-        localStorage.setItem("usersList", JSON.stringify(allUsers))
-        localStorage.setItem("transferList", JSON.stringify(allTransfer))
-        localStorage.setItem('currentUser', JSON.stringify(onlineUser))
-        pinTyped = false
-        enteredPin = ""
-        pinDigitOne.innerText = ""
-        pinDigitTwo.innerText = ""
-        pinDigitThree.innerText = ""
-        pinDigitFour.innerText = ""
     } else {
         console.log(enteredPin)
         console.log(onlineUser.transactionPin)
@@ -198,7 +211,6 @@ const transfer = () => {
         pinDigitThree.innerText = ""
         pinDigitFour.innerText = ""
         console.log(onlineUser)
-        alert("Incorrect Transaction Pin")
-        // incorrectPin.innerText ="Incorrect Pin"
+        invalidTransPin.style.display = "block"
     }
 }
