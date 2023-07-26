@@ -24,7 +24,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
-<body>
+<body onload="blle()">
     <div class="navbar bg-light" id="topNav" style="background-color: whitesmoke; height: 50px;">
         <div class="container container-fluid">
             <a href="dashboard.html" style="color: #590140" class="btn">
@@ -120,6 +120,7 @@
                             </div>
                         </form>
                     </div>
+                    <button onclick="myModal()">CLose</button>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" class="btn text-light" onclick="edit()" id="editMe"
@@ -159,5 +160,6 @@
         </div>
 </body>
 <script src="/js/profile.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </html>

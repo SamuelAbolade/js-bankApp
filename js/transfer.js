@@ -19,19 +19,57 @@ if (localStorage.usersList && localStorage.currentUser) {
     console.log("allTransfer")
     console.log(allTransfer)
 }
-
+bank.addEventListener("change", () => {
+    transferTo.value = ""
+    accountName.innerHTML = ""
+})
 transferTo.addEventListener("input", () => {
-    let findUser = allUsers.find((item, index) => item.accountnumber == transferTo.value && item.accountnumber !== onlineUser.accountnumber)
-    if (findUser) {
-        accountName.innerText = `${findUser.firstname} ${findUser.lastname}`
-        invalidUser.innerText = ""
-        invalidUser.innerText = ""
-        correctAccountNumber = true
-    } else {
-        invalidUser.innerText = "Invalid user"
-        accountName.innerText = ""
-        correctAccountNumber = false
+    // console.log(transferTo.value)
+    if (transferTo.value.length >= 10) {
+        console.log(transferTo.value);
+        const slicedAccNo = transferTo.value.slice(0, 10)
+        console.log(slicedAccNo);
+        transferTo.value = slicedAccNo
+        if (bank.value != "") {
+            const bankCode = bank.value
+            const accNo = slicedAccNo
+            var isLoading = true
+            isLoading && (document.getElementById("accountName").innerHTML = `<div class="spinner-border spinner-border-sm" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow spinner-grow-sm" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>`)
+            transferTo.addEventListener("input", () => {
+                transferTo.value.length < 10 && (accountName.innerText = "")
+            })
+            console.log(bankCode)
+            const url = `https://maylancer.org/api/nuban/api.php?account_number=${accNo}&bank_code=${bankCode}`
+            fetch(url)
+                .then((res) => res.json())
+                .then((convertedRes) => {
+                    console.log(convertedRes);
+                    accountName.innerText = convertedRes.account_name
+                    convertedRes.message == "Try again. Unable to get bank details" && (accountName.innerText = "Account not found")
+                    const success = true
+                    let correctAccountNumber = true
+                })
+                .catch((err) => {
+                    console.log(err);
+                    accountName.innerHTML = `<div class="text-lowercase text-danger">An error occured, Kindly try again</div>`
+                })
+        } else {
+        }
     }
+    // let findUser = allUsers.find((item, index) => item.accountnumber == transferTo.value && item.accountnumber !== onlineUser.accountnumber)
+    // if (findUser) {
+    //     accountName.innerText = `${findUser.firstname} ${findUser.lastname}`
+    //     invalidUser.innerText = ""
+    // } else {
+    //     // invalidUser.innerText = "Invalid user"
+    //     accountName.innerText = ""
+    //     correctAccountNumber = false
+    // }
     if (correctAccountNumber && validAmount) {
         sendMoney.disabled = false
     }
@@ -69,6 +107,7 @@ transferAmount.addEventListener("input", () => {
         insufficientBalance.innerHTML = "You can only transfer from &#8358;100 upwards"
     }
 })
+
 
 const confirmRecieverDetails = () => {
     findUser = allUsers.find((item, index) => item.accountnumber == transferTo.value && item.accountnumber !== onlineUser.accountnumber)
@@ -138,7 +177,7 @@ const clearPin = () => {
         enteredPin = enteredPin.slice(0, 2)
         console.log(enteredPin)
         btnSendMoney.disabled = true
-    } else if (pinDigitOne.innerText !== "" && pinDigitTwo.innerText !== "" && pinDigitThree.innerText !== "" && pinDigitFour.innerText !== ""){
+    } else if (pinDigitOne.innerText !== "" && pinDigitTwo.innerText !== "" && pinDigitThree.innerText !== "" && pinDigitFour.innerText !== "") {
         pinDigitFour.innerText = ""
         enteredPin = enteredPin.slice(0, 3)
         console.log(enteredPin)
@@ -151,12 +190,12 @@ const transfer = () => {
         console.log("userfound")
         console.log(findUser.accountbalance)
         console.log(transferAmount.value)
-        btnSendMoney.innerHTML =`
+        btnSendMoney.innerHTML = `
         <div class="spinner-grow" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>`
         setTimeout(() => {
-            btnSendMoney.style.display="none"
+            btnSendMoney.style.display = "none"
             findUser.accountbalance += Number(transferAmount.value)
             console.log(findUser.accountbalance)
             onlineUser.accountbalance = ((onlineUser.accountbalance) - (transferAmount.value))
@@ -164,7 +203,7 @@ const transfer = () => {
             updateAllUsers = allUsers.find((item, index) => item.accountnumber == onlineUser.accountnumber)
             updateAllUsers.accountbalance = onlineUser.accountbalance
             let date = new Date()
-    
+
             var transferred = {
                 amountTransferred: transferAmount.value,
                 amountRecieved: transferAmount.value,
@@ -185,11 +224,11 @@ const transfer = () => {
                 allTransfer = []
                 allTransfer.push(transferred)
             }
-            
+
             localStorage.setItem("usersList", JSON.stringify(allUsers))
             localStorage.setItem("transferList", JSON.stringify(allTransfer))
             localStorage.setItem('currentUser', JSON.stringify(onlineUser))
-            hideHeader.innerHTML =""
+            hideHeader.innerHTML = ""
             pinDisplay.innerHTML = `
             <div class="text-center col-8 m-auto mt-2">
                 <i class="fa-solid fa-check fs-1 text-light p-3 rounded-circle" style="background-color:#590140"></i>

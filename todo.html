@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <title>Todo App</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" name="todo" placeholder="Add a new todo">
+      <button type="submit">Add</button>
+    </form>
+    <ul></ul>
+  </body>
+  <script>
+    // Initialize an empty array to store the todo items
+    let todos = [];
+
+    // Get references to the form and list elements
+    const form = document.querySelector("form");
+    const list = document.querySelector("ul");
+
+    // Listen for form submissions
+    form.addEventListener("submit", (e) => {
+      // Prevent the form from actually submitting
+      event.preventDefault();
+      console.log(e)
+
+      // Get the value of the input field
+      const todoText = event.target.elements.todo.value;
+
+      // Clear the input field
+      event.target.elements.todo.value = "";
+
+      // Add the new todo item to the array
+      todos.push({ text: todoText, done: false });
+
+      // Re-render the list
+      renderList();
+    });
+
+    // Render the list of todos
+    function renderList() {
+      // Clear the existing list items
+      list.innerHTML = "";
+
+      // Loop through the todos array
+      for (let i = 0; i < todos.length; i++) {
+        // Create a new list item
+        const item = document.createElement("li");
+
+        // Set the text content of the list item to the todo text
+        item.textContent = todos[i].text;
+
+        // Create a delete button and edit button
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+
+        // Append the buttons to the list item
+        item.appendChild(deleteBtn);
+        item.appendChild(editBtn);
+
+        // Listen for click events on the delete button
+        deleteBtn.addEventListener("click", () => {
+          // Remove the todo item from the array
+          todos.splice(i, 1);
+
+          // Re-render the list
+          renderList();
+        });
+
+        // Listen for click events on the edit button
+        editBtn.addEventListener("click", () => {
+          // Get the new text for the todo item
+          const newText = prompt("Enter new text for the todo:");
+
+          // Update the text in the array
+          todos[i].text = newText;
+
+          // Re-render the list
+          renderList();
+        });
+
+        // Append the list item to the list
+        list.appendChild(item);
+      }
+    }
+  </script>
+</html>

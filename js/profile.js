@@ -7,6 +7,11 @@ const generateImageUrl = new FileReader()
 const editDetailsModal = document.getElementById('editDetailsModal')
 const uploadedPhoto1 = document.getElementById('fname')
 
+const blle =() =>{
+    document.title = "emi"
+    // console.log(awa);
+    // awa = "emi"
+}
 /* Profile details page */
 if (localStorage.currentUser && localStorage.usersList) {
     allUsers = JSON.parse(localStorage.getItem("usersList"))
@@ -86,4 +91,8 @@ function displayProfilePhoto() {
         onlineUser.profilePhoto = ""
     }
     // imageUrl = localStorage.getItem()
+}
+const myModal =()=>{
+      // Your code to close the modal goes here
+      $('#editDetailsModal').modal('hide');
 }
